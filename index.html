@@ -1,0 +1,2291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>After They Win — Centre for Youth Policy</title>
+<meta name="description" content="A survey of 100 young elected officials on what political systems do — and fail to do — after they win.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;0,800;0,900;1,400;1,500&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,300;1,6..72,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #efe8d6;
+    --paper-deep: #e3dac3;
+    --paper-card: #e9e1cb;
+    --paper-dark: #1a1814;
+    --ink: #14110d;
+    --ink-soft: #2e2a23;
+    --ink-mute: #6c6557;
+    --ink-faint: #a39c8c;
+    --rule: #14110d;
+    --rule-soft: #b3aa97;
+    --accent: #7a1d1d;
+    --accent-deep: #4d1010;
+    --accent-soft: #9c3535;
+    --measure: 38rem;
+    --measure-wide: 56rem;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: 64px; }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Newsreader', Georgia, serif;
+    font-size: 18px;
+    line-height: 1.65;
+    font-feature-settings: "onum" 1;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  /* ============ TOP NAV ============ */
+  .topnav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(239, 232, 214, 0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 0.5px solid var(--rule-soft);
+  }
+  .topnav-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 14px 28px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+  }
+  .topnav-brand {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-style: italic;
+    font-weight: 700;
+    font-size: 17px;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    text-decoration: none;
+  }
+  .topnav-brand .sub {
+    font-family: 'JetBrains Mono', monospace;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 9px;
+    letter-spacing: 0.22em;
+    color: var(--ink-mute);
+    text-transform: uppercase;
+    display: block;
+    margin-top: 2px;
+  }
+  .topnav-links {
+    display: flex;
+    gap: 22px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  .topnav-links a {
+    color: var(--ink-mute);
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+  .topnav-links a:hover { color: var(--accent); }
+  .topnav-links a.active { color: var(--ink); }
+  @media (max-width: 720px) {
+    .topnav-links { display: none; }
+  }
+
+  /* ============ HERO ============ */
+  .hero {
+    min-height: 92vh;
+    padding: 80px 28px 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background:
+      radial-gradient(ellipse 60% 80% at 50% 100%, rgba(0,0,0,0.05), transparent 60%),
+      var(--paper);
+    border-bottom: 2.4px double var(--rule);
+  }
+  .hero-inner {
+    max-width: 980px;
+    width: 100%;
+    text-align: center;
+  }
+  .hero-eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    margin-bottom: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+  }
+  .hero-eyebrow::before, .hero-eyebrow::after {
+    content: '';
+    flex: 0 1 80px;
+    height: 1.4px;
+    background: var(--accent);
+  }
+  .hero-title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 900;
+    font-size: clamp(64px, 14vw, 180px);
+    line-height: 0.86;
+    letter-spacing: -0.04em;
+    color: var(--ink);
+    margin-bottom: 28px;
+  }
+  .hero-title em {
+    font-style: italic;
+    font-weight: 500;
+    color: var(--accent);
+  }
+  .hero-deck {
+    font-family: 'Newsreader', Georgia, serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: clamp(20px, 2.6vw, 28px);
+    line-height: 1.4;
+    color: var(--ink-soft);
+    max-width: 720px;
+    margin: 0 auto 60px;
+    text-wrap: balance;
+  }
+  .hero-pulls {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    border-top: 0.5px solid var(--rule);
+    border-bottom: 0.5px solid var(--rule);
+    padding: 32px 0;
+    margin-bottom: 40px;
+  }
+  .hero-pull {
+    padding: 0 24px;
+    border-right: 0.5px solid var(--rule-soft);
+  }
+  .hero-pull:last-child { border-right: 0; }
+  .hero-pull-num {
+    font-family: 'Playfair Display', serif;
+    font-weight: 800;
+    font-style: italic;
+    font-size: clamp(48px, 7vw, 72px);
+    line-height: 1;
+    color: var(--accent);
+    letter-spacing: -0.04em;
+    margin-bottom: 8px;
+  }
+  .hero-pull-label {
+    font-family: 'Newsreader', Georgia, serif;
+    font-style: italic;
+    font-size: 14px;
+    line-height: 1.4;
+    color: var(--ink-mute);
+    text-wrap: pretty;
+  }
+  @media (max-width: 720px) {
+    .hero-pulls { grid-template-columns: 1fr; gap: 24px; }
+    .hero-pull { border-right: 0; border-bottom: 0.5px solid var(--rule-soft); padding-bottom: 24px; }
+    .hero-pull:last-child { border-bottom: 0; }
+  }
+  .hero-meta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+  }
+  .hero-meta strong { color: var(--ink); font-weight: 600; }
+
+  .hero-scroll-cue {
+    margin-top: 56px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    animation: pulse 2.4s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 0.5; transform: translateY(0); }
+    50% { opacity: 1; transform: translateY(4px); }
+  }
+
+  /* ============ CHAPTER STRUCTURE ============ */
+  .chapter {
+    padding: 90px 28px 60px;
+    border-bottom: 0.5px solid var(--rule-soft);
+  }
+  .chapter:nth-child(odd-section) { background: var(--paper-deep); }
+  .chapter-inner {
+    max-width: var(--measure-wide);
+    margin: 0 auto;
+  }
+  .chapter-head {
+    max-width: var(--measure);
+    margin: 0 auto 56px;
+    text-align: left;
+  }
+  .chapter-num {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-weight: 800;
+    font-size: 56px;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 8px;
+    letter-spacing: -0.02em;
+  }
+  .chapter-eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    padding-bottom: 14px;
+    border-bottom: 0.5px solid var(--rule);
+    margin-bottom: 22px;
+  }
+  .chapter-title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 800;
+    font-size: clamp(40px, 6vw, 64px);
+    line-height: 0.95;
+    letter-spacing: -0.025em;
+    color: var(--ink);
+    margin-bottom: 22px;
+    text-wrap: balance;
+  }
+  .chapter-title em {
+    font-style: italic;
+    font-weight: 500;
+    color: var(--accent);
+  }
+  .chapter-deck {
+    font-family: 'Newsreader', Georgia, serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 22px;
+    line-height: 1.45;
+    color: var(--ink-soft);
+    text-wrap: pretty;
+  }
+
+  /* ============ BODY PROSE ============ */
+  .prose {
+    /* Children are normally constrained to var(--measure) for readability,
+       but break-out elements (.pq, .fig, .stat-strip, .rank-table, .rec-list)
+       are allowed wider via their own max-width. */
+    max-width: var(--measure-wide);
+    margin: 0 auto;
+  }
+  .prose > p,
+  .prose > .lede,
+  .prose > h3,
+  .prose > .iq,
+  .prose > .kf,
+  .prose > ul,
+  .prose > ol,
+  .prose > blockquote {
+    max-width: var(--measure);
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .prose .lede {
+    font-family: 'Newsreader', Georgia, serif;
+    font-style: italic;
+    font-size: 24px;
+    line-height: 1.45;
+    color: var(--ink-soft);
+    margin-bottom: 32px;
+    text-wrap: pretty;
+  }
+  .prose .lede::first-letter {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-weight: 700;
+    color: var(--accent);
+    font-size: 1.3em;
+    line-height: 1;
+  }
+  .prose p {
+    margin-bottom: 24px;
+    text-wrap: pretty;
+    hyphens: auto;
+  }
+  .prose h3 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 1.15;
+    letter-spacing: -0.015em;
+    color: var(--ink);
+    margin: 56px 0 22px;
+    text-wrap: balance;
+  }
+  .prose h3::before {
+    content: '';
+    display: block;
+    width: 36px;
+    height: 1.4px;
+    background: var(--accent);
+    margin-bottom: 14px;
+  }
+
+  /* ============ PULL QUOTES ============ */
+  .pq {
+    max-width: var(--measure-wide);
+    margin: 56px auto;
+    padding: 48px 32px;
+    text-align: center;
+    border-top: 0.5px solid var(--rule);
+    border-bottom: 0.5px solid var(--rule);
+    position: relative;
+  }
+  .pq::before {
+    content: '"';
+    position: absolute;
+    top: -28px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 96px;
+    color: var(--accent);
+    line-height: 1;
+    background: var(--paper);
+    padding: 0 16px;
+  }
+  .pq-text {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(22px, 3vw, 30px);
+    line-height: 1.35;
+    color: var(--ink);
+    margin-bottom: 20px;
+    text-wrap: balance;
+  }
+  .pq-attr {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+  }
+
+  /* ============ INLINE QUOTES (smaller, in-flow) ============ */
+  .iq {
+    max-width: var(--measure);
+    margin: 32px auto;
+    padding: 24px 0 24px 28px;
+    border-left: 2px solid var(--accent);
+  }
+  .iq-text {
+    font-family: 'Newsreader', Georgia, serif;
+    font-style: italic;
+    font-size: 19px;
+    line-height: 1.5;
+    color: var(--ink-soft);
+    margin-bottom: 12px;
+    text-wrap: pretty;
+  }
+  .iq-attr {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+  }
+
+  /* ============ STAT CELLS ============ */
+  .stat-strip {
+    display: grid;
+    grid-template-columns: repeat(var(--cols, 3), 1fr);
+    gap: 0;
+    border-top: 0.5px solid var(--rule);
+    border-bottom: 0.5px solid var(--rule);
+    margin: 40px auto;
+    max-width: var(--measure-wide);
+  }
+  .stat-cell {
+    padding: 32px 24px;
+    border-right: 0.5px solid var(--rule-soft);
+    position: relative;
+  }
+  .stat-cell:last-child { border-right: 0; }
+  .stat-cell-meta {
+    position: absolute;
+    top: 12px;
+    right: 14px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.18em;
+    color: var(--ink-faint);
+    text-transform: uppercase;
+  }
+  .stat-cell-num {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-weight: 800;
+    font-size: clamp(40px, 5vw, 56px);
+    line-height: 1;
+    color: var(--accent);
+    letter-spacing: -0.03em;
+    margin-bottom: 10px;
+  }
+  .stat-cell-label {
+    font-family: 'Newsreader', Georgia, serif;
+    font-style: italic;
+    font-size: 14px;
+    line-height: 1.4;
+    color: var(--ink-mute);
+    text-wrap: pretty;
+  }
+  @media (max-width: 720px) {
+    .stat-strip { grid-template-columns: 1fr; }
+    .stat-cell { border-right: 0; border-bottom: 0.5px solid var(--rule-soft); }
+    .stat-cell:last-child { border-bottom: 0; }
+  }
+
+  /* ============ KEY-FINDING TAKEAWAY ============ */
+  .kf {
+    max-width: var(--measure);
+    margin: 48px auto;
+    padding: 36px 32px;
+    background: var(--paper-deep);
+    border-left: 3px solid var(--accent);
+    position: relative;
+  }
+  .kf-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 12px;
+    font-weight: 600;
+  }
+  .kf-text {
+    font-family: 'Newsreader', Georgia, serif;
+    font-size: 18px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    text-wrap: pretty;
+  }
+
+  /* ============ FIGURES (charts) ============ */
+  .fig {
+    max-width: var(--measure-wide);
+    margin: 56px auto;
+    padding: 28px 0;
+    border-top: 1.4px solid var(--rule);
+    border-bottom: 0.5px solid var(--rule);
+  }
+  .fig-head {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 20px;
+    margin-bottom: 24px;
+    padding: 0 8px;
+  }
+  .fig-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    color: var(--accent);
+    text-transform: uppercase;
+    padding: 2px 8px;
+    border: 0.5px solid var(--accent);
+    height: fit-content;
+    align-self: start;
+  }
+  .fig-title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 1.2;
+    color: var(--ink);
+    margin-bottom: 6px;
+    text-wrap: balance;
+  }
+  .fig-deck {
+    font-family: 'Newsreader', Georgia, serif;
+    font-style: italic;
+    font-size: 14px;
+    color: var(--ink-mute);
+    line-height: 1.4;
+  }
+  .fig-body {
+    padding: 20px 8px;
+  }
+  .fig-source {
+    display: flex;
+    justify-content: space-between;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.18em;
+    color: var(--ink-mute);
+    text-transform: uppercase;
+    padding: 12px 8px 0;
+    border-top: 0.5px solid var(--rule-soft);
+    gap: 16px;
+  }
+  .fig-source em {
+    font-family: 'Newsreader', Georgia, serif;
+    font-style: italic;
+    text-transform: none;
+    letter-spacing: 0;
+    color: var(--ink-soft);
+    font-size: 12px;
+  }
+  .chart { width: 100%; height: auto; }
+  .chart .grid { stroke: var(--rule-soft); stroke-width: 0.4; stroke-dasharray: 2 2; }
+
+  /* ============ MISC INHERITED FROM PRINT ============ */
+  .colophon, .editor-note {
+    max-width: var(--measure);
+    margin: 32px auto;
+    padding: 24px 28px;
+    background: var(--paper-deep);
+    border-left: 3px solid var(--ink-faint);
+    font-family: 'Newsreader', Georgia, serif;
+    font-style: italic;
+    font-size: 16px;
+    line-height: 1.5;
+    color: var(--ink-mute);
+  }
+  .span-all { grid-column: 1 / -1; }
+
+/* ============ RANKING TABLE ============ */
+  .rank-table {
+    max-width: var(--measure-wide);
+    margin: 32px auto;
+    border-collapse: collapse;
+    width: 100%;
+    font-family: 'Newsreader', Georgia, serif;
+  }
+  .rank-table thead th {
+    border-bottom: 1.4px solid var(--rule);
+    padding: 12px 8px;
+    text-align: left;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    color: var(--ink-mute);
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+  .rank-table thead th.r { text-align: right; }
+  .rank-table tbody td {
+    padding: 18px 8px;
+    border-bottom: 0.5px solid var(--rule-soft);
+    font-size: 17px;
+    vertical-align: top;
+  }
+  .rank-table .rank {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-weight: 700;
+    font-size: 22px;
+    color: var(--accent);
+    width: 70px;
+  }
+  .rank-table .impact {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-weight: 700;
+    font-size: 22px;
+    color: var(--ink);
+    text-align: right;
+    width: 110px;
+  }
+  .rank-table tbody tr:last-child td { border-bottom: 0; }
+
+  /* ============ RECOMMENDATIONS ============ */
+  .rec-list { max-width: var(--measure-wide); margin: 0 auto; }
+  .rec {
+    display: grid;
+    grid-template-columns: 90px 1fr;
+    gap: 36px;
+    padding: 36px 0;
+    border-bottom: 0.5px solid var(--rule-soft);
+    align-items: start;
+  }
+  .rec:last-child { border-bottom: 0; }
+  .rec-num {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-weight: 800;
+    font-size: 36px;
+    color: var(--accent);
+    line-height: 1;
+  }
+  .rec-num small {
+    display: block;
+    font-family: 'JetBrains Mono', monospace;
+    font-style: normal;
+    font-size: 9px;
+    letter-spacing: 0.22em;
+    color: var(--ink-mute);
+    text-transform: uppercase;
+    margin-top: 8px;
+    font-weight: 500;
+  }
+  .rec-title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 1.2;
+    color: var(--ink);
+    margin-bottom: 12px;
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+  }
+  .rec p {
+    font-size: 17px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    text-wrap: pretty;
+  }
+  @media (max-width: 720px) {
+    .rec { grid-template-columns: 1fr; gap: 16px; }
+  }
+
+  /* ============ DARK SECTION (system view) ============ */
+  .chapter.dark {
+    background: var(--paper-dark);
+    color: #d8d2c0;
+    border-bottom: 0;
+  }
+  .chapter.dark .chapter-num { color: #d97757; }
+  .chapter.dark .chapter-eyebrow { color: #a09a8a; border-color: #3d3a32; }
+  .chapter.dark .chapter-title { color: #f0eadb; }
+  .chapter.dark .chapter-title em { color: #d97757; }
+  .chapter.dark .chapter-deck { color: #c8c2b0; }
+  .chapter.dark .prose p, .chapter.dark .prose .lede { color: #d8d2c0; }
+  .chapter.dark .prose h3 { color: #f0eadb; }
+  .chapter.dark .prose h3::before { background: #d97757; }
+  .chapter.dark .stat-cell-num { color: #d97757; }
+  .chapter.dark .stat-cell-label { color: #a09a8a; }
+  .chapter.dark .stat-strip { border-color: #3d3a32; }
+  .chapter.dark .stat-cell { border-color: #2a2722; }
+  .chapter.dark .stat-cell-meta { color: #6c6557; }
+  .chapter.dark .kf { background: #2a2722; border-left-color: #d97757; }
+  .chapter.dark .kf-tag { color: #d97757; }
+  .chapter.dark .kf-text { color: #d8d2c0; }
+  .chapter.dark .pq { border-color: #3d3a32; }
+  .chapter.dark .pq::before { background: var(--paper-dark); color: #d97757; }
+  .chapter.dark .pq-text { color: #f0eadb; }
+  .chapter.dark .pq-attr { color: #a09a8a; }
+
+  /* ============ FOOTER ============ */
+  .site-footer {
+    background: var(--paper-dark);
+    color: #a09a8a;
+    padding: 80px 28px 40px;
+  }
+  .footer-inner {
+    max-width: var(--measure-wide);
+    margin: 0 auto;
+  }
+  .footer-mark {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-style: italic;
+    font-weight: 700;
+    font-size: 32px;
+    color: #f0eadb;
+    margin-bottom: 8px;
+  }
+  .footer-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #6c6557;
+    margin-bottom: 56px;
+    padding-bottom: 24px;
+    border-bottom: 0.5px solid #3d3a32;
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 48px;
+    margin-bottom: 48px;
+  }
+  @media (max-width: 720px) {
+    .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+  }
+  .footer-col h4 {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.24em;
+    color: #6c6557;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    font-weight: 500;
+  }
+  .footer-col p {
+    font-family: 'Newsreader', Georgia, serif;
+    font-size: 15px;
+    line-height: 1.55;
+    color: #a09a8a;
+    margin-bottom: 12px;
+  }
+  .footer-col a {
+    display: block;
+    color: #d8d2c0;
+    font-family: 'Newsreader', Georgia, serif;
+    font-size: 15px;
+    text-decoration: none;
+    margin-bottom: 6px;
+    transition: color 0.15s;
+  }
+  .footer-col a:hover { color: #d97757; }
+  .footer-fine {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    color: #6c6557;
+    text-transform: uppercase;
+    padding-top: 24px;
+    border-top: 0.5px solid #3d3a32;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  /* ============ CONTENTS / TOC ============ */
+  .toc-section {
+    padding: 90px 28px 110px;
+    background: var(--paper-deep);
+    border-bottom: 0.5px solid var(--rule);
+  }
+  .toc-inner {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  .toc-h {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 800;
+    font-size: 56px;
+    line-height: 1;
+    letter-spacing: -0.025em;
+    color: var(--ink);
+    margin-bottom: 56px;
+    border-bottom: 1.4px solid var(--rule);
+    padding-bottom: 24px;
+  }
+  .toc-h em { font-style: italic; font-weight: 500; color: var(--accent); }
+  .toc-list { list-style: none; }
+  .toc-row {
+    display: grid;
+    grid-template-columns: 50px 1fr;
+    gap: 22px;
+    padding: 18px 0;
+    border-bottom: 0.5px solid var(--rule-soft);
+    align-items: baseline;
+  }
+  .toc-row:last-child { border-bottom: 0; }
+  .toc-row a {
+    color: inherit;
+    text-decoration: none;
+    display: contents;
+  }
+  .toc-row:hover .toc-label { color: var(--accent); }
+  .toc-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    color: var(--ink-mute);
+    text-transform: uppercase;
+    padding-top: 4px;
+  }
+  .toc-label {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 1.3;
+    color: var(--ink);
+    transition: color 0.15s;
+  }
+  .toc-label em {
+    display: block;
+    font-family: 'Newsreader', Georgia, serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 16px;
+    color: var(--ink-mute);
+    margin-top: 4px;
+  }
+
+  /* ============ SECTION DIVIDERS ============ */
+  .section-rule {
+    max-width: 80px;
+    margin: 48px auto;
+    border-top: 1.4px solid var(--accent);
+  }
+
+  /* ============ ANIMATIONS ============ */
+  /* Animation tokens (overridable via tweaks) */
+  :root {
+    --anim-distance: 28px;
+    --anim-duration: 800ms;
+    --anim-stagger: 80ms;
+    --anim-ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+
+  .anim-on .reveal {
+    opacity: 0;
+    transform: translateY(var(--anim-distance));
+    transition:
+      opacity var(--anim-duration) var(--anim-ease),
+      transform var(--anim-duration) var(--anim-ease);
+    transition-delay: var(--reveal-delay, 0ms);
+    will-change: opacity, transform;
+  }
+  .anim-on .reveal.in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Chart drawing — bars and lines */
+  .anim-on .chart .anim-bar {
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform 1100ms var(--anim-ease);
+    transition-delay: var(--chart-delay, 0ms);
+  }
+  .anim-on .chart.in .anim-bar { transform: scaleX(1); }
+
+  .anim-on .chart .anim-dot {
+    opacity: 0;
+    transform: scale(0);
+    transform-origin: center center;
+    transition:
+      opacity 400ms var(--anim-ease),
+      transform 600ms var(--anim-ease);
+    transition-delay: var(--chart-delay, 0ms);
+  }
+  .anim-on .chart.in .anim-dot { opacity: 1; transform: scale(1); }
+
+  .anim-on .chart .anim-line {
+    stroke-dasharray: var(--line-len, 1000);
+    stroke-dashoffset: var(--line-len, 1000);
+    transition: stroke-dashoffset 1300ms var(--anim-ease);
+    transition-delay: var(--chart-delay, 0ms);
+  }
+  .anim-on .chart.in .anim-line { stroke-dashoffset: 0; }
+
+  .anim-on .chart .anim-fade {
+    opacity: 0;
+    transition: opacity 600ms var(--anim-ease);
+    transition-delay: var(--chart-delay, 0ms);
+  }
+  .anim-on .chart.in .anim-fade { opacity: 1; }
+
+  /* Respect prefers-reduced-motion */
+  @media (prefers-reduced-motion: reduce) {
+    .anim-on .reveal, .anim-on .chart * {
+      opacity: 1 !important;
+      transform: none !important;
+      stroke-dashoffset: 0 !important;
+      transition: none !important;
+    }
+  }
+
+  /* ============ RESPONSIVE ============ */
+  @media (max-width: 720px) {
+    body { font-size: 17px; }
+    .hero { padding: 56px 22px 40px; min-height: auto; }
+    .hero-title { font-size: clamp(56px, 18vw, 96px); }
+    .chapter { padding: 60px 22px 40px; }
+    .chapter-title { font-size: clamp(36px, 9vw, 48px); }
+    .toc-section { padding: 60px 22px; }
+    .toc-h { font-size: 40px; }
+    .toc-row { grid-template-columns: 36px 1fr; gap: 12px; }
+    .toc-label { font-size: 18px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<nav class="topnav" id="topnav">
+  <div class="topnav-inner">
+    <a href="#top" class="topnav-brand">
+      After They Win
+      <span class="sub">Centre for Youth Policy · 2026</span>
+    </a>
+    <div class="topnav-links">
+      <a href="#contents">Contents</a>
+      <a href="#summary">Summary</a>
+      <a href="#part-04">Findings</a>
+      <a href="#recommendations">Recommendations</a>
+      <a href="#methodology">Methodology</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<header class="hero" id="top">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">A Survey of 100 Young Elected Officials</div>
+    <h1 class="hero-title">After<br><em>They Win</em></h1>
+    <p class="hero-deck">How and why political systems lose<br>their youngest elected officials.</p>
+
+    <div class="hero-pulls">
+      <div class="hero-pull">
+        <div class="hero-pull-num">71%</div>
+        <div class="hero-pull-label">say it is easier to win office than to remain in politics long-term.</div>
+      </div>
+      <div class="hero-pull">
+        <div class="hero-pull-num">90%</div>
+        <div class="hero-pull-label">say staffing support would change their decision to seek another term.</div>
+      </div>
+      <div class="hero-pull">
+        <div class="hero-pull-num">56%</div>
+        <div class="hero-pull-label">are unsure or unlikely to still be in politics five years from now.</div>
+      </div>
+    </div>
+
+    <div class="hero-meta">
+      <span><strong>By</strong> Sudhanshu Kaushik</span>
+      <span>Fieldwork Jan 2025 — Jan 2026</span>
+      <span>Centre for Youth Policy</span>
+    </div>
+
+    <div class="hero-scroll-cue">↓ Begin reading</div>
+  </div>
+</header>
+
+<!-- ============ CONTENTS ============ -->
+<section class="toc-section" id="contents">
+  <div class="toc-inner">
+    <h2 class="toc-h">In this <em>report.</em></h2>
+    <ul class="toc-list">
+      <li class="toc-row"><a href="#summary"><span class="toc-num">i.</span><span class="toc-label">Executive Summary <em>The findings, the field, and the headline reform.</em></span></a></li>
+      <li class="toc-row"><a href="#pathways"><span class="toc-num">00.</span><span class="toc-label">Pathways into politics <em>Why these young people entered office, and what they expected.</em></span></a></li>
+      <li class="toc-row"><a href="#part-01"><span class="toc-num">01.</span><span class="toc-label">The retention crisis <em>Most respondents are not sure they will still be in politics in five years.</em></span></a></li>
+      <li class="toc-row"><a href="#part-02"><span class="toc-num">02.</span><span class="toc-label">Party displacement and the lost ballot <em>Young officials lose access to the ballot, not the election.</em></span></a></li>
+      <li class="toc-row"><a href="#part-03"><span class="toc-num">03.</span><span class="toc-label">The price of public service <em>Money is the constant pressure underneath everything else.</em></span></a></li>
+      <li class="toc-row"><a href="#part-04"><span class="toc-num">04.</span><span class="toc-label">The staffing gap <em>The single most actionable finding in the survey.</em></span></a></li>
+      <li class="toc-row"><a href="#part-05"><span class="toc-num">05.</span><span class="toc-label">Visibility without power <em>Holding office is not the same as holding power.</em></span></a></li>
+      <li class="toc-row"><a href="#part-06"><span class="toc-num">06.</span><span class="toc-label">Exit as a rational choice <em>Burnout is the conclusion of a coherent calculation.</em></span></a></li>
+      <li class="toc-row"><a href="#part-07"><span class="toc-num">07.</span><span class="toc-label">How the system looks from inside it</span></a></li>
+      <li class="toc-row"><a href="#part-08"><span class="toc-num">08.</span><span class="toc-label">Ranking the barriers</span></a></li>
+      <li class="toc-row"><a href="#recommendations"><span class="toc-num">ii.</span><span class="toc-label">Recommendations <em>Six things that would change the trajectory.</em></span></a></li>
+      <li class="toc-row"><a href="#conclusion"><span class="toc-num">iii.</span><span class="toc-label">Conclusion</span></a></li>
+      <li class="toc-row"><a href="#methodology"><span class="toc-num">A.</span><span class="toc-label">Methodology and sample</span></a></li>
+    </ul>
+  </div>
+</section>
+
+<!-- Body chapters injected here by build script -->
+<div id="report-body">
+<section class="chapter" id="summary">
+  <div class="chapter-inner">
+    <header class="chapter-head">
+      <div class="chapter-num">i.</div>
+      <div class="chapter-eyebrow">Executive Summary</div>
+      <h2 class="chapter-title">The pipeline does not leak <em>before</em> the victory.<br>It leaks <em>after.</em></h2>
+      <p class="chapter-deck">A twelve-month survey of 100 young elected and appointed officials across six regions reveals that political systems have learned how to recruit a new generation without learning how to keep them.</p>
+    </header>
+    <div class="prose">
+      <p class="lede">The story we tell about young people in politics is a story about getting in. Quotas are passed. Age limits are lowered. Movements push first-time candidates onto ballots. The conclusion follows easily: progress is being made.</p>
+
+    <p>This report tells a different story.</p>
+
+    <p>Between January 2025 and January 2026, the Centre for Youth Policy surveyed 100 young elected and appointed officials across six world regions. The respondents were parliamentarians, ministers, state and provincial legislators, and local councillors, all under 33, with an average age of 27. They were asked, in detail, what happened to them after they won.</p>
+
+    <p>The answer is that most of them are not sure they will still be in politics in five years.</p>
+
+    <div class="stat-strip" style="--cols: 2;">
+      <div class="stat-cell">
+        <div class="stat-cell-meta">Q19</div>
+        <div class="stat-cell-num">71%</div>
+        <div class="stat-cell-label">agreed it is easier for young people to win office than to remain in politics long-term.</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-cell-meta">Q50</div>
+        <div class="stat-cell-num">90%</div>
+        <div class="stat-cell-label">said professional staffing support would make them more likely to seek another term.</div>
+      </div>
+    </div>
+
+    <p>These are not the numbers of a sector that is succeeding at youth representation. They are the numbers of a pipeline that is leaking after the first victory. The dominant model of youth political reform has built doors. What is missing is the floor on the other side of the door — the staff, the salary, the renomination security, and the committee assignments that allow a young official to walk in, do the job, and stay.</p>
+
+    <h3>What the survey shows</h3>
+
+    <p>The survey identifies five barriers that explain the leak: party displacement after entry, financial and career instability, institutional under-support and the absence of staffing, marginalization inside political institutions, and exit driven by burnout, harassment, and disillusionment. Each is documented in detail in the eight chapters of this report.</p>
+
+    <p>When respondents were asked to rank these barriers, the top answer was not money, party politics, or burnout. It was the lack of staff and institutional support. Sixty percent identified institutional under-support as the single barrier that most affected their own political career. Financial instability ranked last, even though 83 percent reported they could not fully cover basic living expenses on their official compensation. The implication is that money is universally felt but is rarely the proximate cause of exit. What pushes young officials out is the cumulative experience of trying to legislate without staff, trying to win renomination without party protection, and trying to build authority inside institutions that have already decided how much of it to allow them.</p>
+
+    <p>Party displacement is the second clearest mechanism. Thirty-nine percent of respondents struggled to secure renomination after their first term. Eighty-one percent agreed that political parties use young candidates for visibility but do not support them as long-term leaders. Ninety-five percent said parties should do more to retain and develop young officials they have already elected. The post-victory gatekeeping of parties is a more decisive factor in young officials' careers than any electoral defeat measured in this study.</p>
+
+    <p>Marginalization is the third structural pattern. Seventy-seven percent of respondents agreed that young elected officials are celebrated publicly but excluded from real decision-making. Fifty-three percent reported limited or no real influence over decisions in their institutional environment. Symbolic inclusion is the dominant mode of how young officials are received once elected.</p>
+
+    <p>Burnout, harassment, and exit are the downstream effects, not the underlying causes. Fifty-five percent reported burnout. Thirty-two percent had experienced harassment, threats, or intimidation severe enough to affect their work. Twenty-five percent said safety concerns directly affected their political continuation. Forty-four percent had left politics or seriously considered doing so for reasons other than electoral defeat. Read in isolation these figures look like resilience problems. Read alongside the staffing, party, and marginalization findings, they look like the predictable consequences of structural under-support.</p>
+
+    <h3>What the report recommends</h3>
+
+    <p>Six recommendations follow directly from the findings. The most important is the construction of dedicated staffing infrastructure for young elected officials. Ninety percent of respondents said they would be more likely to seek another term or higher office if they had access to a professional staffing ecosystem. Of every reform the survey tested, this one carried the largest behavioral signal. It is also the recommendation most easily acted on by parliaments, parties, and donors, because it does not require constitutional change or party-level reform.</p>
+
+    <p>The other recommendations address transparent renomination pathways, real institutional power including substantive committee assignments, compensation and the cost of service, treating burnout and safety as retention infrastructure rather than personal challenges, and a shift in how the youth political field measures success — from entry rates to retention, recontestation, and advancement. These six interventions are described in full in the closing section of this report.</p>
+
+    <div class="kf">
+      <div class="kf-tag">Central Finding</div>
+      <p class="kf-text">The dominant model of youth political reform has focused on opening doors. The evidence here suggests that doors are not the problem. What is missing is the floor on the other side of the door — the infrastructure that allows a young official to walk in, do the job, and stay.</p>
+    </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="chapter" id="pathways">
+  <div class="chapter-inner">
+    <header class="chapter-head">
+      <div class="chapter-num">00.</div>
+      <div class="chapter-eyebrow">Before the Findings</div>
+      <h2 class="chapter-title">Pathways into <em>politics.</em></h2>
+      <p class="chapter-deck">Before describing what happened to these officials after they won, the report describes how they got there. The entry routes shape everything that follows.</p>
+    </header>
+    <div class="prose">
+      <p class="lede">No two political careers begin the same way, but the survey shows the entry routes cluster into a small number of recognizable patterns. Understanding these patterns matters because the route into office shapes the resources, networks, and exposure a young official brings with them, and therefore shapes how vulnerable they are to the structural barriers documented in the rest of this report.</p>
+
+    <p>When respondents were asked how they first entered politics or public life, the most common single route was the political party youth wing, named by an estimated 52% of respondents. Civil society and NGO work followed at 41%, with student politics at 38%. Roughly 29% entered through social or protest movements, 26% through community organizing, and 22% through digital and social media activism. About one in five respondents, or 21%, came from families with a political background.</p>
+
+    <div class="fig">
+      <div class="fig-head">
+        <div class="fig-num">Fig. 00 · Q11</div>
+        <div>
+          <div class="fig-title">How they got in</div>
+          <div class="fig-deck">Most common entry routes into politics or public life. Multiple selections permitted.</div>
+        </div>
+      </div>
+      <div class="fig-body">
+        <svg class="chart" viewBox="0 0 600 320" xmlns="http://www.w3.org/2000/svg">
+          <g transform="translate(180, 14)">
+            <!-- Party youth wing 52 -->
+            <text x="-8" y="14" text-anchor="end" font-family="Newsreader" font-size="10" fill="#2e2a23">Party youth wing</text>
+            <line x1="0" y1="14" x2="208" y2="14" stroke="#7a1d1d" stroke-width="1.4"/>
+            <circle cx="208" cy="14" r="9" fill="#7a1d1d"/>
+            <text x="208" y="18" font-family="Playfair Display" font-style="italic" font-weight="700" font-size="11" fill="#efe8d6" text-anchor="middle">52</text>
+
+            <text x="-8" y="42" text-anchor="end" font-family="Newsreader" font-size="10" fill="#2e2a23">Civil society / NGO</text>
+            <line x1="0" y1="42" x2="164" y2="42" stroke="#7a1d1d" stroke-width="1.4"/>
+            <circle cx="164" cy="42" r="9" fill="#7a1d1d"/>
+            <text x="164" y="46" font-family="Playfair Display" font-style="italic" font-weight="700" font-size="11" fill="#efe8d6" text-anchor="middle">41</text>
+
+            <text x="-8" y="70" text-anchor="end" font-family="Newsreader" font-size="10" fill="#2e2a23">Student politics</text>
+            <line x1="0" y1="70" x2="152" y2="70" stroke="#7a1d1d" stroke-width="1.4"/>
+            <circle cx="152" cy="70" r="9" fill="#7a1d1d"/>
+            <text x="152" y="74" font-family="Playfair Display" font-style="italic" font-weight="700" font-size="11" fill="#efe8d6" text-anchor="middle">38</text>
+
+            <text x="-8" y="98" text-anchor="end" font-family="Newsreader" font-size="10" fill="#2e2a23">Social / protest movement</text>
+            <line x1="0" y1="98" x2="116" y2="98" stroke="#9c3535" stroke-width="1.4"/>
+            <circle cx="116" cy="98" r="9" fill="#9c3535"/>
+            <text x="116" y="102" font-family="Playfair Display" font-style="italic" font-weight="700" font-size="11" fill="#efe8d6" text-anchor="middle">29</text>
+
+            <text x="-8" y="126" text-anchor="end" font-family="Newsreader" font-size="10" fill="#2e2a23">Community organizing</text>
+            <line x1="0" y1="126" x2="104" y2="126" stroke="#9c3535" stroke-width="1.4"/>
+            <circle cx="104" cy="126" r="9" fill="#9c3535"/>
+            <text x="104" y="130" font-family="Playfair Display" font-style="italic" font-weight="700" font-size="11" fill="#efe8d6" text-anchor="middle">26</text>
+
+            <text x="-8" y="154" text-anchor="end" font-family="Newsreader" font-size="10" fill="#2e2a23">Digital / social media</text>
+            <line x1="0" y1="154" x2="88" y2="154" stroke="#9c3535" stroke-width="1.4"/>
+            <circle cx="88" cy="154" r="9" fill="#9c3535"/>
+            <text x="88" y="158" font-family="Playfair Display" font-style="italic" font-weight="700" font-size="11" fill="#efe8d6" text-anchor="middle">22</text>
+
+            <text x="-8" y="182" text-anchor="end" font-family="Newsreader" font-size="10" fill="#2e2a23">Family political background</text>
+            <line x1="0" y1="182" x2="84" y2="182" stroke="#9c3535" stroke-width="1.4"/>
+            <circle cx="84" cy="182" r="9" fill="#9c3535"/>
+            <text x="84" y="186" font-family="Playfair Display" font-style="italic" font-weight="700" font-size="11" fill="#efe8d6" text-anchor="middle">21</text>
+
+            <text x="-8" y="210" text-anchor="end" font-family="Newsreader" font-size="10" fill="#2e2a23">Direct senior invitation</text>
+            <line x1="0" y1="210" x2="64" y2="210" stroke="#9c3535" stroke-width="1.4"/>
+            <circle cx="64" cy="210" r="9" fill="#9c3535"/>
+            <text x="64" y="214" font-family="Playfair Display" font-style="italic" font-weight="700" font-size="11" fill="#efe8d6" text-anchor="middle">16</text>
+
+            <line x1="0" y1="240" x2="400" y2="240" stroke="#14110d" stroke-width="0.5"/>
+            <text x="0" y="256" font-family="JetBrains Mono" font-size="7" fill="#6c6557">0</text>
+            <text x="100" y="256" text-anchor="middle" font-family="JetBrains Mono" font-size="7" fill="#6c6557">25</text>
+            <text x="200" y="256" text-anchor="middle" font-family="JetBrains Mono" font-size="7" fill="#6c6557">50</text>
+            <text x="300" y="256" text-anchor="middle" font-family="JetBrains Mono" font-size="7" fill="#6c6557">75</text>
+            <text x="400" y="256" text-anchor="middle" font-family="JetBrains Mono" font-size="7" fill="#6c6557">100% OF RESPONDENTS</text>
+          </g>
+        </svg>
+      </div>
+      <div class="fig-source"><span>SOURCE · Q11 · n = 100 · Multiple selections permitted</span></div>
+    </div>
+
+    <p>These categories overlap, and most respondents named more than one entry route. The pattern that matters is the dominance of party youth wings as the single most common formal entry channel, paired with the unusually high prevalence of civil society and movement entries. Young officials in this sample are not, in the main, dynastic. They came in through the institutions of civic engagement that the development sector has spent two decades building. The investment, by that measure, has worked.</p>
+
+    <p>What was not built alongside it was a sustaining infrastructure for what happens once they win. The remainder of this report documents the consequences.</p>
+
+    <h3>What helped them win the first time</h3>
+
+    <p>When asked which single factor was most important in helping them first win or enter office, party nomination and support was the most common answer at 34%. Personal networks accounted for 22%, social movement support for 14%, and community reputation for 12%. Youth quotas or reserved seats, the most discussed reform mechanism in the field, accounted for only 8% of first wins in this sample, with family or political connections at 6% and personal financial resources at 4%.</p>
+
+    <p>Two findings stand out. First, formal quota mechanisms produce a smaller share of young officials than the policy literature might suggest, at least within this sample. The dominant entry pathway remains party-mediated. Second, the role of social movements and community reputation, taken together, accounts for more than a quarter of first wins. This is consistent with the open-response material, in which respondents repeatedly described entering politics through a specific local cause or organizing cycle that gave them visibility before any party became involved.</p>
+
+    <h3>How prepared they felt for the role</h3>
+
+    <p>The transition from candidate to officeholder is, in this sample, abrupt. Asked how prepared they felt for the responsibilities of office before entering, only 12% said they felt very prepared. Another 28% felt somewhat prepared. The remaining 60% reported feeling neither prepared nor unprepared, somewhat unprepared, or very unprepared.</p>
+
+    <p>The post-entry picture is starker. Asked whether they received any formal onboarding or training after entering office, an estimated 41% reported no formal training at all. A further 32% received only limited training. Only 11% reported extensive training. The remainder, around 16%, said they had to seek training independently.</p>
+
+    <div class="stat-strip" style="--cols: 2;">
+      <div class="stat-cell">
+        <div class="stat-cell-num">60%</div>
+        <div class="stat-cell-label">felt neither prepared, somewhat unprepared, or very unprepared for office.</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-cell-num">73%</div>
+        <div class="stat-cell-label">received no formal training, only limited training, or had to seek training on their own.</div>
+      </div>
+    </div>
+
+    <p>These figures explain a great deal of what follows in the report. A new local councillor or freshman MP who arrives at the chamber with limited preparation, no formal onboarding, and no policy staff is going to learn the institution by trying things and failing in public. The institutions in this study have not built the apprenticeship infrastructure that would make that transition survivable.</p>
+
+    <div class="kf">
+      <div class="kf-tag">Section Takeaway</div>
+      <p class="kf-text">The doors of political entry are more open than they have ever been. Young officials are arriving through party youth wings, civil society, student politics, and social movements. What has not been built behind those doors is the apprenticeship and onboarding system that would help a 26-year-old learn how a parliament actually works before being asked to vote in it.</p>
+    </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="chapter" id="part-01">
+  <div class="chapter-inner">
+    <header class="chapter-head">
+      <div class="chapter-num">01.</div>
+      <div class="chapter-eyebrow">Part One · The Crisis</div>
+      <h2 class="chapter-title">The retention <em>crisis.</em></h2>
+      <p class="chapter-deck">Most respondents are not sure they will still be in formal politics in five years. The clearest finding in the study is that political systems are losing young officials after entry, not before it.</p>
+    </header>
+    <div class="prose">
+      <p class="lede">The clearest finding in this study is that political systems are losing young officials after entry, not before it.</p>
+
+    <p>When respondents were asked whether they planned to seek another term or higher office, 42 percent said yes, 22 percent had already done so, and 36 percent either did not plan to continue or were unsure. The 36 percent figure is large enough to indicate serious retention risk on its own. The picture darkens when the time horizon extends. Asked how likely they were to still be active in formal politics in five years, 56 percent said they were unsure or unlikely.</p>
+
+    <div class="pq">
+      <p class="pq-text">Winning was supposed to be the hard part. But getting in was only the first gate. Staying in was much harder than the campaign itself.</p>
+      <p class="pq-attr">National Parliamentarian · 30 · South Asia</p>
+    </div>
+
+    <div class="fig">
+      <div class="fig-head">
+        <div class="fig-num">Fig. 01 · Q17</div>
+        <div>
+          <div class="fig-title">Five-year outlook</div>
+          <div class="fig-deck">“How likely are you to still be active in formal politics five years from now?”</div>
+        </div>
+      </div>
+      <div class="fig-body">
+        <svg class="chart" viewBox="0 0 600 240" xmlns="http://www.w3.org/2000/svg">
+          <!-- horizontal stacked bar, single row -->
+          <g transform="translate(20, 60)">
+            <!-- segments: very likely 22, somewhat 22, unsure 28, somewhat unlikely 18, very unlikely 10 -->
+            <rect x="0"   y="0" width="123.2" height="38" fill="#2e2a23"/>
+            <rect x="123.2" y="0" width="123.2" height="38" fill="#6c6557"/>
+            <rect x="246.4" y="0" width="156.8" height="38" fill="#a39c8c"/>
+            <rect x="403.2" y="0" width="100.8" height="38" fill="#9c3535"/>
+            <rect x="504"   y="0" width="56" height="38" fill="#4d1010"/>
+
+            <!-- in-bar values -->
+            <text x="61.6" y="24" text-anchor="middle" fill="#efe8d6" font-family="Playfair Display" font-style="italic" font-weight="700" font-size="16">22%</text>
+            <text x="184.8" y="24" text-anchor="middle" fill="#efe8d6" font-family="Playfair Display" font-style="italic" font-weight="700" font-size="16">22%</text>
+            <text x="324.8" y="24" text-anchor="middle" fill="#14110d" font-family="Playfair Display" font-style="italic" font-weight="700" font-size="16">28%</text>
+            <text x="453.6" y="24" text-anchor="middle" fill="#efe8d6" font-family="Playfair Display" font-style="italic" font-weight="700" font-size="16">18%</text>
+            <text x="532" y="24" text-anchor="middle" fill="#efe8d6" font-family="Playfair Display" font-style="italic" font-weight="700" font-size="16">10%</text>
+
+            <!-- top labels -->
+            <g font-family="JetBrains Mono" font-size="7" fill="#6c6557" letter-spacing="0.5">
+              <text x="61.6" y="-6" text-anchor="middle">VERY LIKELY</text>
+              <text x="184.8" y="-6" text-anchor="middle">SOMEWHAT</text>
+              <text x="324.8" y="-6" text-anchor="middle">UNSURE</text>
+              <text x="453.6" y="-6" text-anchor="middle">SOMEWHAT NOT</text>
+              <text x="532" y="-6" text-anchor="middle">VERY NOT</text>
+            </g>
+
+            <!-- bracket annotation under right side: 56% unsure or unlikely -->
+            <line x1="246.4" y1="50" x2="246.4" y2="68" stroke="#7a1d1d" stroke-width="0.6"/>
+            <line x1="560"   y1="50" x2="560" y2="68" stroke="#7a1d1d" stroke-width="0.6"/>
+            <line x1="246.4" y1="68" x2="560" y2="68" stroke="#7a1d1d" stroke-width="0.6"/>
+            <line x1="403.2" y1="68" x2="403.2" y2="80" stroke="#7a1d1d" stroke-width="0.6"/>
+            <text x="403.2" y="100" text-anchor="middle" font-family="Playfair Display" font-style="italic" font-weight="500" font-size="22" fill="#7a1d1d">56% unsure or unlikely</text>
+            <text x="403.2" y="118" text-anchor="middle" font-family="JetBrains Mono" font-size="8" fill="#6c6557" letter-spacing="2">— THE RETENTION GAP —</text>
+
+            <!-- bracket annotation above left side: 44% likely -->
+            <line x1="0" y1="-22" x2="0" y2="-32" stroke="#2e2a23" stroke-width="0.6"/>
+            <line x1="246.4" y1="-22" x2="246.4" y2="-32" stroke="#2e2a23" stroke-width="0.6"/>
+            <line x1="0" y1="-32" x2="246.4" y2="-32" stroke="#2e2a23" stroke-width="0.6"/>
+            <text x="123.2" y="-38" text-anchor="middle" font-family="JetBrains Mono" font-size="8" fill="#2e2a23" letter-spacing="2">44% LIKELY TO STAY</text>
+          </g>
+        </svg>
+      </div>
+      <div class="fig-source"><span>SOURCE · CFYP SURVEY 2025–26 · n = 100 · Q17</span><em>Two questions in different sections returned the same 71% agreement.</em></div>
+    </div>
+
+    <p>The most direct measure of the crisis is the 71 percent agreement with a single proposition: it is easier for young people to win office than to remain in politics long-term. A separate question, asking whether political systems recruit young candidates better than they sustain young leaders, returned the same 71 percent agreement. Two questions, asked in different sections of the survey, produced the same answer. Triangulation of this kind is rare in survey research. It indicates that the perception is not an artefact of question wording but a stable assessment respondents make about their own systems.</p>
+
+    <p>The composition of the 36 percent who do not plan to continue or are unsure deserves attention. The interview material suggests that this group is not, in the main, composed of young officials who entered politics tentatively. It includes respondents who had built campaigns over several years, who had won decisively, and who described themselves at the time of entry as committed to long political careers. Their uncertainty is not the uncertainty of new entrants. It is the uncertainty of people who arrived inside the institution and discovered that the institution was not configured to keep them.</p>
+
+    <h3>The shape of the loss</h3>
+
+    <p>When the field is read in light of this finding, much of the existing youth political infrastructure looks oddly oriented. Programs, conferences, training pipelines, and donor strategies have built considerable momentum around the work of getting young people elected. Substantially less attention has gone to what happens during the years they hold office. A young official who wins, struggles, and quietly exits after one term does not generate the same coverage as a first-time victory. Their absence from year five does not generate coverage at all.</p>
+
+    <p>This produces a measurement problem that compounds the substantive problem. The dominant statistics on youth political participation track entry. The Inter-Parliamentary Union counts young MPs by year. National election commissions report the share of candidates under thirty. Donor reports highlight first-time wins. None of these widely cited measures track whether the same young officials are still in office two terms later, whether they were renominated, or whether they advanced. The infrastructure of measurement is configured to celebrate doors opening and is largely silent about what happens after they close behind a new entrant.</p>
+
+    <div class="iq">
+      <p class="iq-text">During the campaign, they wanted me everywhere. Once I was elected and started disagreeing inside caucus, the invitations stopped. My face disappeared from the material. I learned very quickly that they wanted my image, not my voice.</p>
+      <p class="iq-attr">National Parliamentarian · 28 · West Africa</p>
+    </div>
+
+    <h3>The cost of the leak</h3>
+
+    <p>Each young official who exits after one term represents not only a personal loss but a structural one. The institutional knowledge they accumulated about how committees work, how budget cycles move, how their constituency thinks, leaves with them. The mentorship they could have offered to the next cohort of younger entrants is not transmitted. The pipeline that should produce senior political leadership in fifteen years does not get the practice it needs in years three to seven. Political systems that lose their youngest officials reliably are also systems that struggle to produce a steady supply of mid-career political leadership a decade later.</p>
+
+    <div class="kf">
+      <div class="kf-tag">Report Takeaway</div>
+      <p class="kf-text">Young political entry is not translating reliably into durable political careers. The pipeline leaks after victory, not only before candidacy. The pattern is not that young people are uninterested in politics. The pattern is that the political institutions they enter are not built to keep them.</p>
+    </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="chapter" id="part-02">
+  <div class="chapter-inner">
+    <header class="chapter-head">
+      <div class="chapter-num">02.</div>
+      <div class="chapter-eyebrow">Part Two · The Gatekeepers</div>
+      <h2 class="chapter-title">Party displacement and the <em>lost ballot.</em></h2>
+      <p class="chapter-deck">Young officials often do not lose elections. They lose access to the political machinery required to contest again.</p>
+    </header>
+    <div class="prose">
+      <p class="lede">Political parties remain the gatekeepers of who gets to run. They control nomination, ticket allocation, list placement, faction backing, and renomination. The survey shows that party support behaves very differently before and after a young candidate wins.</p>
+
+    <p>Twenty-seven percent of respondents reported that party support decreased or was withdrawn after they entered office. Thirty-nine percent had faced difficulty securing renomination, reselection, or party backing for a future race. Forty percent had personally experienced or observed party displacement of young elected officials. Fifty-five percent said it was very or somewhat common in their political system for young officials to be replaced after one term by older or better-connected candidates.</p>
+
+    <div class="fig">
+      <div class="fig-head">
+        <div class="fig-num">Fig. 02 · Q26 / Q27 / Q55</div>
+        <div>
+          <div class="fig-title">Symbolic versus sustained inclusion</div>
+          <div class="fig-deck">The gap between the campaign value and the governing value of being young.</div>
+        </div>
+      </div>
+      <div class="fig-body">
+        <svg class="chart" viewBox="0 0 600 280" xmlns="http://www.w3.org/2000/svg">
+          <!-- three lollipops -->
+          <g font-family="JetBrains Mono" font-size="9" fill="#6c6557">
+            <line x1="100" y1="20" x2="100" y2="260" class="grid"/>
+            <line x1="200" y1="20" x2="200" y2="260" class="grid"/>
+            <line x1="300" y1="20" x2="300" y2="260" class="grid"/>
+            <line x1="400" y1="20" x2="400" y2="260" class="grid"/>
+            <line x1="500" y1="20" x2="500" y2="260" class="grid"/>
+          </g>
+
+          <!-- 95% youth identity more valued in campaign -->
+          <g transform="translate(0, 50)">
+            <text x="20" y="-8" font-family="Newsreader" font-style="italic" font-size="11" fill="#2e2a23">Youth identity was more valued during the campaign than in office</text>
+            <line x1="20" y1="0" x2="495" y2="0" stroke="#7a1d1d" stroke-width="1.5"/>
+            <circle cx="20" cy="0" r="2.5" fill="#7a1d1d"/>
+            <circle cx="495" cy="0" r="6" fill="#7a1d1d"/>
+            <text x="510" y="4" font-family="Playfair Display" font-style="italic" font-weight="700" font-size="18" fill="#7a1d1d">95%</text>
+          </g>
+
+          <!-- 81% used for visibility -->
+          <g transform="translate(0, 130)">
+            <text x="20" y="-8" font-family="Newsreader" font-style="italic" font-size="11" fill="#2e2a23">Young candidates are used for visibility, not supported for leadership</text>
+            <line x1="20" y1="0" x2="425" y2="0" stroke="#7a1d1d" stroke-width="1.5"/>
+            <circle cx="20" cy="0" r="2.5" fill="#7a1d1d"/>
+            <circle cx="425" cy="0" r="6" fill="#7a1d1d"/>
+            <text x="440" y="4" font-family="Playfair Display" font-style="italic" font-weight="700" font-size="18" fill="#7a1d1d">81%</text>
+          </g>
+
+          <!-- 77% celebrated but excluded -->
+          <g transform="translate(0, 210)">
+            <text x="20" y="-8" font-family="Newsreader" font-style="italic" font-size="11" fill="#2e2a23">Young officials are celebrated publicly but excluded from real decision-making</text>
+            <line x1="20" y1="0" x2="405" y2="0" stroke="#7a1d1d" stroke-width="1.5"/>
+            <circle cx="20" cy="0" r="2.5" fill="#7a1d1d"/>
+            <circle cx="405" cy="0" r="6" fill="#7a1d1d"/>
+            <text x="420" y="4" font-family="Playfair Display" font-style="italic" font-weight="700" font-size="18" fill="#7a1d1d">77%</text>
+          </g>
+
+          <!-- baseline scale -->
+          <line x1="20" y1="265" x2="520" y2="265" stroke="#14110d" stroke-width="0.5"/>
+          <g font-family="JetBrains Mono" font-size="7" fill="#6c6557" letter-spacing="2">
+            <text x="20" y="278">0%</text>
+            <text x="270" y="278" text-anchor="middle">50%</text>
+            <text x="520" y="278" text-anchor="end">100%</text>
+          </g>
+
+          <!-- annotation arrow pointing to 95% -->
+          <text x="495" y="34" font-family="Newsreader" font-style="italic" font-size="10" fill="#7a1d1d" text-anchor="end">↓ near-unanimous</text>
+        </svg>
+      </div>
+      <div class="fig-source"><span>SOURCE · Q26 / Q27 / Q55 · COMBINED “AGREE” + “STRONGLY AGREE”</span><em>Almost no one experiences their youth as an asset that retains value in office.</em></div>
+    </div>
+
+    <p>The most striking party-related findings are not about formal withdrawal of support. They are about what young officials understand the party to have wanted from them in the first place. Eighty-one percent of respondents agreed that young candidates are often used by parties for visibility but not supported for long-term leadership. Ninety-five percent agreed that their youth identity was more valued during the campaign than during their time in office. Almost no one in this sample experienced their youth as an asset that retained its value once they were inside the building.</p>
+
+    <p>The 95 percent figure is one of the most concentrated agreement patterns in the survey. It crosses regions, party families, and office levels. The specific mechanism it describes is not subtle. During a campaign, a young candidate is a recruitment device. They appear in voter outreach material aimed at younger voters. They are quoted in coverage about generational change. They appear next to senior figures in unity photographs that signal renewal. Once they win, the same party leadership that elevated them often treats them as one of many freshmen with no particular claim on senior attention.</p>
+
+    <div class="pq">
+      <p class="pq-text">I did not lose an election. I was removed before voters had the chance to decide. The party gave my seat to someone else because a regional leader owed a favor.</p>
+      <p class="pq-attr">Former Local Councillor · 31 · Southeast Asia</p>
+    </div>
+
+    <h3>The mechanisms of displacement</h3>
+
+    <p>Respondents who reported difficulty with renomination identified a recognizable set of reasons. The party preferred an older or more senior candidate. A regional leader had committed the seat to a patronage ally. The young official had been seen as too independent, or had voted against the leadership on a sensitive bill. They lacked the financial network to fund their own renomination contest. They lacked a faction sponsor inside the party. Internal party processes that determined renomination were not transparent and offered no formal appeal. None of these mechanisms involves voters. All of them are visible only to insiders.</p>
+
+    <p>The pattern is gendered. Women in the sample were more likely to report difficulty with renomination, more likely to describe being replaced by an older male candidate, and more likely to identify factional politics as the proximate cause of their displacement. The intersection of age and gender produces a particular vulnerability. A young woman who wins a seat once may be celebrated as evidence of party modernization. The same party may then route her seat to a senior male figure during the next nomination cycle, on the grounds that a more experienced candidate is needed for a competitive race.</p>
+
+    <h3>When losing the seat does not mean losing the election</h3>
+
+    <p>The implication for how youth political success is measured is significant. A young politician who is denied renomination has not, in any electoral sense, lost. Voters were never given the choice. Yet in the most commonly cited statistics on youth political participation, this person disappears in exactly the same way as a defeated incumbent. The mechanism of loss is invisible in the data.</p>
+
+    <p>This invisibility has consequences for advocacy. Civil society and donor strategies that succeed in producing first-time wins may have very limited effect on retention if the party machinery downstream of the election remains opaque. A first-term victory creates the appearance of progress. The renomination cycle, two or four years later, can quietly reverse it. Without measurement of renomination outcomes, the field has no way to detect this reversal as it happens.</p>
+
+    <div class="kf">
+      <div class="kf-tag">Report Takeaway</div>
+      <p class="kf-text">Young officials, in many cases, do not lose elections. They lose access to the ballot. The mechanism is opaque internal party processes, not voter rejection. The infrastructure of measurement currently treats both outcomes identically, which obscures one of the most consequential dynamics in youth political retention.</p>
+    </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="chapter" id="part-03">
+  <div class="chapter-inner">
+    <header class="chapter-head">
+      <div class="chapter-num">03.</div>
+      <div class="chapter-eyebrow">Part Three · The Price</div>
+      <h2 class="chapter-title">The price of <em>public service.</em></h2>
+      <p class="chapter-deck">Financial strain is nearly universal but rarely the headline reason for exit. Money is the constant pressure underneath everything else, the force that makes other barriers harder to absorb.</p>
+    </header>
+    <div class="prose">
+      <p class="lede">The financial findings are severe and nearly universal. Eighty-three percent of respondents said that the compensation attached to their office was not fully sufficient to cover their basic living expenses. Eighty-five percent said financial pressure affected their ability to serve effectively, either a great deal or somewhat.</p>
+
+    <div class="pq">
+      <p class="pq-text">My salary could cover rent, or it could cover travel back to my constituency. It could not cover both. For two years, I borrowed money from my mother just to keep showing up.</p>
+      <p class="pq-attr">State Legislator · 27 · East Africa</p>
+    </div>
+
+    <div class="fig">
+      <div class="fig-head">
+        <div class="fig-num">Fig. 03 · Q32 / Q34 / Q35 / Q39</div>
+        <div>
+          <div class="fig-title">The cost of staying in office</div>
+          <div class="fig-deck">Four measurements of how money pushes against retention.</div>
+        </div>
+      </div>
+      <div class="fig-body">
+        <svg class="chart" viewBox="0 0 600 280" xmlns="http://www.w3.org/2000/svg">
+          <!-- 4 horizontal bars with editorial annotation -->
+          <g transform="translate(0, 14)" font-family="JetBrains Mono" font-size="8">
+            <!-- 83 -->
+            <text x="0" y="0" font-family="Newsreader" font-style="italic" font-size="10" fill="#2e2a23">Compensation not fully sufficient for basic living expenses</text>
+            <rect x="0" y="6" width="498" height="22" fill="#e3dac3"/>
+            <rect x="0" y="6" width="413" height="22" fill="#7a1d1d"/>
+            <text x="406" y="22" text-anchor="end" fill="#efe8d6" font-family="Playfair Display" font-weight="700" font-style="italic" font-size="16">83%</text>
+
+            <!-- 85 -->
+            <text x="0" y="56" font-family="Newsreader" font-style="italic" font-size="10" fill="#2e2a23">Financial pressure affected ability to serve effectively</text>
+            <rect x="0" y="62" width="498" height="22" fill="#e3dac3"/>
+            <rect x="0" y="62" width="423" height="22" fill="#7a1d1d"/>
+            <text x="416" y="78" text-anchor="end" fill="#efe8d6" font-family="Playfair Display" font-weight="700" font-style="italic" font-size="16">85%</text>
+
+            <!-- 54 -->
+            <text x="0" y="112" font-family="Newsreader" font-style="italic" font-size="10" fill="#2e2a23">Considered leaving politics for a more financially stable career</text>
+            <rect x="0" y="118" width="498" height="22" fill="#e3dac3"/>
+            <rect x="0" y="118" width="269" height="22" fill="#9c3535"/>
+            <text x="262" y="134" text-anchor="end" fill="#efe8d6" font-family="Playfair Display" font-weight="700" font-style="italic" font-size="16">54%</text>
+
+            <!-- 40 -->
+            <text x="0" y="168" font-family="Newsreader" font-style="italic" font-size="10" fill="#2e2a23">Affected decision to seek another term</text>
+            <rect x="0" y="174" width="498" height="22" fill="#e3dac3"/>
+            <rect x="0" y="174" width="199" height="22" fill="#9c3535"/>
+            <text x="192" y="190" text-anchor="end" fill="#efe8d6" font-family="Playfair Display" font-weight="700" font-style="italic" font-size="16">40%</text>
+
+            <!-- annotation -->
+            <text x="510" y="22" font-family="Newsreader" font-style="italic" font-size="10" fill="#7a1d1d">↑ working condition</text>
+            <text x="510" y="78" font-family="Newsreader" font-style="italic" font-size="10" fill="#7a1d1d">↑ working condition</text>
+            <text x="510" y="134" font-family="Newsreader" font-style="italic" font-size="10" fill="#9c3535">↑ tipping point</text>
+            <text x="510" y="190" font-family="Newsreader" font-style="italic" font-size="10" fill="#9c3535">↑ exit pressure</text>
+
+            <!-- bracket grouping -->
+            <line x1="-12" y1="6" x2="-12" y2="84" stroke="#14110d" stroke-width="0.5"/>
+            <line x1="-12" y1="118" x2="-12" y2="196" stroke="#14110d" stroke-width="0.5"/>
+            <text x="-18" y="50" text-anchor="end" font-size="6.5" fill="#6c6557" letter-spacing="2">DAILY BURDEN</text>
+            <text x="-18" y="162" text-anchor="end" font-size="6.5" fill="#6c6557" letter-spacing="2">RETENTION RISK</text>
+
+            <line x1="0" y1="218" x2="498" y2="218" stroke="#14110d" stroke-width="0.4"/>
+            <text x="0" y="232" font-size="7" fill="#6c6557" letter-spacing="2">0%</text>
+            <text x="249" y="232" text-anchor="middle" font-size="7" fill="#6c6557" letter-spacing="2">50%</text>
+            <text x="498" y="232" text-anchor="end" font-size="7" fill="#6c6557" letter-spacing="2">100%</text>
+          </g>
+        </svg>
+      </div>
+      <div class="fig-source"><span>SOURCE · Q32 / Q34 / Q35 / Q39</span><em>Money rarely shows up as the line that pushes a young official out — but it makes every other line harder to absorb.</em></div>
+    </div>
+
+    <p>Fifty-four percent had seriously or occasionally considered leaving politics for a more financially stable career, or had already left for that reason. These numbers describe a working condition. Young officials are paying out of pocket to do the job, borrowing from family to cover the gap between salary and need.</p>
+
+    <p>The financial pressure has a temporal dimension that the headline figures do not capture. The years of greatest financial vulnerability are typically the first two years in office, before a young official has accumulated the savings, network, or reputation that allows them to subsidize the role from outside income. They are also the years in which institutional decisions about a young official's future, including committee assignments, leadership tracks, and signals about renomination, are being made. The financial pressure peaks in exactly the period when sustained presence and engagement matter most.</p>
+
+    <div class="iq">
+      <p class="iq-text">I left a job in tech where I earned four times more than I do now. My partner asked me how long we were going to keep living like this. I did not have an answer. I still believed in the work, but belief does not pay rent or build a future.</p>
+      <p class="iq-attr">Appointed Government Official · 29 · Western Europe</p>
+    </div>
+
+    <h3>The hidden costs of office</h3>
+
+    <p>Salary is the most visible part of the financial picture but not the most punishing. Respondents consistently identified the costs that are not covered by official compensation as the more serious source of strain. Travel between the constituency and the seat of government, particularly for legislators representing districts far from the capital. Constituency office expenses, including staff salaries, rent, and supplies. The expectation in many political cultures that an elected official will personally contribute to community events, weddings, funerals, and emergencies, often at significant cost. Campaign fundraising for the next race, which begins almost immediately after the previous one ends.</p>
+
+    <p>None of these expenses appear on the salary line. All of them must be paid for out of the same compensation that does not, for 83 percent of respondents, fully cover basic living expenses. The gap is filled by family money, outside income, partner support, savings drawn down, and debt. The result is a slow financial erosion that compounds across a term and shapes the calculation about whether to seek a second one.</p>
+
+    <h3>A force multiplier, not a single cause</h3>
+
+    <p>Forty-four percent of respondents agreed that only young people with family wealth, patronage networks, or outside income can afford to remain in politics. The 44 percent figure, given the absoluteness of the statement, is best read as a floor rather than a ceiling. Nearly half of the sample sees politics as structurally tilted toward those who can subsidize their own careers. The implication is a class filter that operates after the election rather than before it. Anyone can win. Only a subset can afford to stay.</p>
+
+    <p>There is, however, an important nuance in how respondents ranked the financial barrier. When asked to compare all five barriers from most to least important, financial and career instability ranked fifth. Financial pressure is widespread as a daily burden of service, but respondents identified institutional under-support, party displacement, and lack of power as more decisive in determining whether they would stay. The interpretation is not that money does not matter. The interpretation is that the financial barrier interacts with the others. A young official with adequate staff and clear renomination security can absorb financial strain that would otherwise be intolerable. The same financial strain becomes decisive for an official who is also fighting institutional under-support and an uncertain political future.</p>
+
+    <div class="kf">
+      <div class="kf-tag">Report Takeaway</div>
+      <p class="kf-text">Money is the constant pressure underneath everything. It rarely shows up as the single line that pushes a young official out, but it makes every other pressure harder to absorb. Reforms that address only compensation, without addressing staffing and party security, will not solve the retention problem.</p>
+    </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="chapter" id="part-04">
+  <div class="chapter-inner">
+    <header class="chapter-head">
+      <div class="chapter-num">04.</div>
+      <div class="chapter-eyebrow">Part Four · The Headline Finding</div>
+      <h2 class="chapter-title">The staffing <em>gap.</em></h2>
+      <p class="chapter-deck">Sixty percent identified institutional under-support as the barrier that most affected their political career. Ninety percent said staffing support would change their decision to stay. The single most actionable finding in the survey.</p>
+    </header>
+    <div class="prose">
+      <p class="lede">This is the central finding of the report.</p>
+
+    <p>When respondents were asked to rank the five barriers, lack of staff and institutional support came first. When they were asked which single barrier most affected their own political career, 60 percent named institutional under-support. When they were asked whether access to a professional staffing ecosystem would make them more likely to seek another term or higher office, 90 percent said yes. The 90 percent figure is the strongest reform-related finding in the survey.</p>
+
+    <div class="pq">
+      <p class="pq-text">I was 26, sitting in parliament, drafting amendments by myself at midnight because I had no policy staff. Everyone expected me to perform at the same level, but I was doing the job with almost none of the machinery that makes the job possible.</p>
+      <p class="pq-attr">National Parliamentarian · 28 · Latin America</p>
+    </div>
+
+    <div class="fig">
+      <div class="fig-head">
+        <div class="fig-num">Fig. 04 · Q45</div>
+        <div>
+          <div class="fig-title">Support young officials needed but did not have</div>
+          <div class="fig-deck">Percentage who reported needing each type of support but lacking it.</div>
+        </div>
+      </div>
+      <div class="fig-body">
+        <svg class="chart" viewBox="0 0 600 320" xmlns="http://www.w3.org/2000/svg">
+          <g font-family="JetBrains Mono" font-size="8" fill="#6c6557">
+            <!-- vertical grid -->
+            <line x1="200" y1="10" x2="200" y2="280" class="grid"/>
+            <line x1="300" y1="10" x2="300" y2="280" class="grid"/>
+            <line x1="400" y1="10" x2="400" y2="280" class="grid"/>
+            <line x1="500" y1="10" x2="500" y2="280" class="grid"/>
+          </g>
+
+          <!-- bars -->
+          <g transform="translate(200, 20)">
+            <!-- Legislative 70 -->
+            <text x="-8" y="14" text-anchor="end" font-family="Newsreader" font-size="10" fill="#2e2a23">Legislative / research support</text>
+            <line x1="0" y1="14" x2="350" y2="14" stroke="#7a1d1d" stroke-width="1.2"/>
+            <circle cx="350" cy="14" r="7" fill="#7a1d1d"/>
+            <text x="364" y="18" font-family="Playfair Display" font-style="italic" font-weight="700" font-size="16" fill="#7a1d1d">70%</text>
+
+            <!-- Communications 65 -->
+            <text x="-8" y="50" text-anchor="end" font-family="Newsreader" font-size="10" fill="#2e2a23">Communications / social media</text>
+            <line x1="0" y1="50" x2="325" y2="50" stroke="#7a1d1d" stroke-width="1.2"/>
+            <circle cx="325" cy="50" r="7" fill="#7a1d1d"/>
+            <text x="339" y="54" font-family="Playfair Display" font-style="italic" font-weight="700" font-size="16" fill="#7a1d1d">65%</text>
+
+            <!-- Constituent 55 -->
+            <text x="-8" y="86" text-anchor="end" font-family="Newsreader" font-size="10" fill="#2e2a23">Constituent services</text>
+            <line x1="0" y1="86" x2="275" y2="86" stroke="#7a1d1d" stroke-width="1.2"/>
+            <circle cx="275" cy="86" r="7" fill="#7a1d1d"/>
+            <text x="289" y="90" font-family="Playfair Display" font-style="italic" font-weight="700" font-size="16" fill="#7a1d1d">55%</text>
+
+            <!-- Mentorship 48 -->
+            <text x="-8" y="122" text-anchor="end" font-family="Newsreader" font-size="10" fill="#2e2a23">Mentorship</text>
+            <line x1="0" y1="122" x2="240" y2="122" stroke="#9c3535" stroke-width="1.2"/>
+            <circle cx="240" cy="122" r="7" fill="#9c3535"/>
+            <text x="254" y="126" font-family="Playfair Display" font-style="italic" font-weight="700" font-size="16" fill="#9c3535">48%</text>
+
+            <!-- Legal 45 -->
+            <text x="-8" y="158" text-anchor="end" font-family="Newsreader" font-size="10" fill="#2e2a23">Legal / procedural guidance</text>
+            <line x1="0" y1="158" x2="225" y2="158" stroke="#9c3535" stroke-width="1.2"/>
+            <circle cx="225" cy="158" r="7" fill="#9c3535"/>
+            <text x="239" y="162" font-family="Playfair Display" font-style="italic" font-weight="700" font-size="16" fill="#9c3535">45%</text>
+
+            <!-- Mental health 38 -->
+            <text x="-8" y="194" text-anchor="end" font-family="Newsreader" font-size="10" fill="#2e2a23">Mental health support</text>
+            <line x1="0" y1="194" x2="190" y2="194" stroke="#9c3535" stroke-width="1.2"/>
+            <circle cx="190" cy="194" r="7" fill="#9c3535"/>
+            <text x="204" y="198" font-family="Playfair Display" font-style="italic" font-weight="700" font-size="16" fill="#9c3535">38%</text>
+
+            <!-- Security 32 -->
+            <text x="-8" y="230" text-anchor="end" font-family="Newsreader" font-size="10" fill="#2e2a23">Security / harassment response</text>
+            <line x1="0" y1="230" x2="160" y2="230" stroke="#9c3535" stroke-width="1.2"/>
+            <circle cx="160" cy="230" r="7" fill="#9c3535"/>
+            <text x="174" y="234" font-family="Playfair Display" font-style="italic" font-weight="700" font-size="16" fill="#9c3535">32%</text>
+
+            <!-- baseline -->
+            <line x1="0" y1="260" x2="500" y2="260" stroke="#14110d" stroke-width="0.5"/>
+            <text x="0" y="276" font-family="JetBrains Mono" font-size="7" fill="#6c6557">0%</text>
+            <text x="250" y="276" text-anchor="middle" font-family="JetBrains Mono" font-size="7" fill="#6c6557">50%</text>
+            <text x="500" y="276" text-anchor="end" font-family="JetBrains Mono" font-size="7" fill="#6c6557">100%</text>
+
+            <!-- annotation top -->
+            <text x="350" y="-2" font-family="Newsreader" font-style="italic" font-size="10" fill="#7a1d1d" text-anchor="middle">↑ near-universal lack of basic policy infrastructure</text>
+          </g>
+        </svg>
+      </div>
+      <div class="fig-source"><span>SOURCE · Q45 · CFYP SURVEY 2025–26</span><em>“The job, with almost none of the machinery that makes the job possible.”</em></div>
+    </div>
+
+    <p>The texture of the staffing gap is worth examining in detail. Seventy-four percent of respondents reported inadequate staffing access or significant staffing-related concerns. Eighty percent said the lack of staff limited their effectiveness in office. Sixty-five percent said it directly affected their decision about whether to continue in politics. Seventy percent agreed that young officials are expected to perform like senior politicians without the staff, networks, or institutional infrastructure they need.</p>
+
+    <p>These numbers describe more than an administrative inconvenience. They describe a structural mismatch between what office requires and what young officials are given to do it. A new MP without a research staffer is asked to evaluate budget legislation by reading the bill themselves at night. A new councillor without communications support is asked to defend their record on social media in real time, alone, while running a constituency office on volunteer help.</p>
+
+    <div class="iq">
+      <p class="iq-text">I learned how the committee bill review process worked by making mistakes in public. Nobody briefed me. The first time I got something wrong, people treated it as proof that I was inexperienced, not as proof that the institution had failed to prepare a newly elected member.</p>
+      <p class="iq-attr">State Legislator · 30 · North America</p>
+    </div>
+
+    <h3>What staff they actually had</h3>
+
+    <p>The shape of the staffing gap becomes clearer when the question is reversed. Asked what professional staff they did have access to during their time in office, an estimated 23% of respondents reported full-time staff, while 31% had part-time staff and 14% shared staff with other officials. The remainder, roughly 32%, reported either no paid staff at all or relied solely on volunteers.</p>
+
+    <p>Where staff did exist, the question of who paid for them is revealing. The institutional or government office covered staffing for an estimated 38% of respondents who had any staff at all. Political parties provided staff for around 21%. The remaining staffing came from personal funds (15%), donor or fellowship programs (14%), and volunteers (12%). The picture is one of substantial reliance on personal resources and short-term donor support to do work that, in a fully resourced political institution, would be funded by the institution itself.</p>
+
+    <p>The functional breakdown of available support is equally uneven. The most commonly available type of support, named by an estimated 48% of respondents, was scheduling and logistics. Communications support reached 38%. Constituent services support reached 35%. Legislative and research support, the function most strongly associated with effective governance, was available to only 28% of respondents. Mentorship was available to roughly 22%, and legal or procedural guidance to around 19%.</p>
+
+    <p>Read alongside the Q45 figures shown in the previous chart, the pattern is consistent. The functions that young officials need most, particularly research and policy capacity, are the ones least likely to be provided by the institutions they enter. The functions that are most likely to be provided are the ones that are easiest to staff and the ones least likely to translate directly into legislative effectiveness.</p>
+
+    <h3>Informal infrastructure as evidence of institutional failure</h3>
+
+    <p>The most striking adaptation to the staffing gap is the rise of informal substitutes. Respondents described WhatsApp groups serving as policy teams, friends acting as unpaid press secretaries, and ad hoc cross-border peer networks functioning as the only research infrastructure they had access to.</p>
+
+    <div class="iq">
+      <p class="iq-text">I started a WhatsApp group with three other young MPs from the region because none of us had proper research support. That group became the closest thing I had to a policy team. It sounds informal, but for many of us, that was the only infrastructure we had.</p>
+      <p class="iq-attr">National Parliamentarian · 29 · MENA</p>
+    </div>
+
+    <p>Informal networks of this kind are evidence of resourcefulness. They are also evidence of institutional failure. A 28-year-old legislator should not need to crowdsource bill analysis from peers in other countries because no one in their own parliament was assigned to brief them.</p>
+
+    <h3>What the reform could look like</h3>
+
+    <p>The reform implied by these findings is unusually concrete. It is not a cultural shift, a constitutional amendment, or a generation-long campaign. It is staffing. The mechanisms already exist in mature political systems for senior officials. The reform consists of extending a comparable infrastructure to young first-term officials, who are currently the most under-resourced legislators in most parliaments precisely at the moment they most need support.</p>
+
+    <p>A working model exists in fragments across the political world. Westminster-tradition parliaments offer some research support to backbenchers through library and committee staff. Some legislatures fund individual member offices with small staff budgets. Civil society organizations occasionally embed policy fellows into the offices of priority legislators. None of these arrangements add up, in any single political system, to the comprehensive staffing infrastructure that would address the 90 percent finding.</p>
+
+    <p>A scalable design would combine three elements. First, a guaranteed minimum staff allocation for first-term young officials, funded through legislative budgets rather than party budgets so that staffing does not become another lever of party discipline. Second, a fellowship program that places trained policy and communications staff into the offices of first-term officials for two-year embedded placements, drawing on civil society, academia, and donor support to build the staffing pipeline. Third, shared institutional support functions, including legal and procedural advisers, communications training, and constituent services capacity, that young officials can draw on without needing to fund the full headcount themselves.</p>
+
+    <p>None of this is exotic. None of it requires institutional reinvention. The cost is modest relative to the cost of the campaign and recruitment infrastructure that produced the young officials in the first place. The 90 percent finding indicates that the recipients themselves are clear about what would change their decision to stay. The reform agenda does not require persuading them. It requires resourcing the response.</p>
+
+    <div class="kf">
+      <div class="kf-tag">Report Takeaway</div>
+      <p class="kf-text">Staffing is not an administrative detail. It is the missing infrastructure that determines whether young officials can govern, recontest, and build durable power. Of every reform discussed in this report, it is the most concrete, the most fundable, and the most clearly endorsed by the respondents themselves.</p>
+    </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="chapter" id="part-05">
+  <div class="chapter-inner">
+    <header class="chapter-head">
+      <div class="chapter-num">05.</div>
+      <div class="chapter-eyebrow">Part Five · The Marginalization</div>
+      <h2 class="chapter-title">Visibility without <em>power.</em></h2>
+      <p class="chapter-deck">Holding office is not the same as holding power. Young officials report being celebrated publicly while excluded from the rooms where decisions are made.</p>
+    </header>
+    <div class="prose">
+      <p class="lede">A repeated theme across the survey is that holding office is not the same as holding power.</p>
+
+    <p>Fifty-three percent of respondents felt they had limited, very little, or no real influence over decisions in office. Seventy-seven percent agreed that young elected officials are celebrated publicly but excluded from real decision-making. Seventy-five percent had felt tokenized because of their age. Seventy percent said their ideas were dismissed because of their age or perceived lack of experience.</p>
+
+    <div class="stat-strip" style="--cols: 3;">
+      <div class="stat-cell">
+        <div class="stat-cell-meta">Q55</div>
+        <div class="stat-cell-num">77%</div>
+        <div class="stat-cell-label">said they were celebrated publicly but excluded from real decision-making.</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-cell-meta">Q56</div>
+        <div class="stat-cell-num">75%</div>
+        <div class="stat-cell-label">had felt tokenized because of their age.</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-cell-meta">Q59</div>
+        <div class="stat-cell-num">70%</div>
+        <div class="stat-cell-label">said their ideas were dismissed because of age.</div>
+      </div>
+    </div>
+
+    <div class="pq">
+      <p class="pq-text">They put me on the youth committee. And the gender committee. They said I was part of the future, but they kept me away from the decisions that shape the present.</p>
+      <p class="pq-attr">National Parliamentarian · 31 · South Asia</p>
+    </div>
+
+    <p>This is the architecture of symbolic inclusion. A young official is given the title, the seat, the photograph in the official party material, and the speaking slot at the youth conference. What they are not given is the committee assignment that controls budget, the portfolio that touches infrastructure, or the leadership role that signals they are being prepared for higher office. Sixty percent reported that this kind of marginalization had affected their motivation to continue in politics.</p>
+
+    <div class="iq">
+      <p class="iq-text">In committee, senior members would speak over me while I was still making my point. Then, ten minutes later, one of them would repeat almost exactly what I had said, and the chair would nod. By the third time, I understood the pattern.</p>
+      <p class="iq-attr">Local Councillor · 27 · Eastern Europe</p>
+    </div>
+
+    <h3>The portfolio pattern</h3>
+
+    <p>The survey did not formally measure committee assignments, but the pattern in the open-response and interview material is consistent enough to be worth naming. Young officials are disproportionately assigned to youth, gender, sport, culture, technology, and digital affairs portfolios. They are disproportionately absent from finance, foreign affairs, defense, infrastructure, and energy. The portfolios in the first set are real and matter, and the respondents who held them did not dismiss the work. But the portfolios in the second set are the ones that produce the legislative records, the constituency relationships, and the donor networks that translate into long political careers.</p>
+
+    <p>Routing young officials toward the first set and away from the second is not always an explicit decision. It is often presented as recognition, as alignment with their interests, or as a fit with their public profile. The cumulative effect is the same regardless of intent. By the time renomination comes around, the young official has a record built on portfolios that are politically less consequential than those held by their senior colleagues. They are then evaluated, often by the same leadership that made the assignments, on a record that the assignments themselves constrained.</p>
+
+    <h3>A mechanism, not a feeling</h3>
+
+    <p>There is a particularly difficult dynamic captured in these findings. The same political system that values youth identity highly during a campaign appears to discount it just as sharply during governance. Respondents reported being asked to embody generational change publicly while being excluded from the institutional processes through which generational change would actually happen. A young legislator can spend a four-year term being celebrated as the future of their party while never being placed on a committee that touches real authority. By the time renomination comes around, they have a thin record of substantive influence to run on, which the same party leadership that constrained them then cites as the reason to back someone else.</p>
+
+    <p>This is what makes the marginalization finding structurally important rather than emotionally important. It produces a manufactured weakness that the institution then treats as a natural one. The young official who is denied the committee, the portfolio, or the leadership track does not develop the record that would make their continuation obvious. Their absence of influence is then read by the same institution as evidence that they were not ready for influence in the first place.</p>
+
+    <div class="kf">
+      <div class="kf-tag">Report Takeaway</div>
+      <p class="kf-text">Marginalization is not, in this sample, primarily a feeling. It is a mechanism that converts formal representation into political fragility. Symbolic inclusion without substantive responsibility produces young officials with thin records, which then becomes the justification for not continuing to invest in them.</p>
+    </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="chapter" id="part-06">
+  <div class="chapter-inner">
+    <header class="chapter-head">
+      <div class="chapter-num">06.</div>
+      <div class="chapter-eyebrow">Part Six · The Exit</div>
+      <h2 class="chapter-title">Exit as a <em>rational choice.</em></h2>
+      <p class="chapter-deck">More than half the sample reports burnout. Forty-four percent have left politics or seriously considered it. These are not failures of resilience. They are the conclusion of a coherent calculation.</p>
+    </header>
+    <div class="prose">
+      <p class="lede">Fifty-five percent of respondents reported burnout, ranging from mild to severe. Thirty-two percent had experienced harassment, intimidation, or threats, online, offline, or both. Twenty-five percent said safety concerns had directly affected their willingness to continue in politics. Forty-four percent had left politics, seriously considered leaving, or occasionally considered leaving.</p>
+
+    <div class="pq">
+      <p class="pq-text">I am not burned out because the work is hard. I am burned out because I began to understand that the work often does not change anything. The real decisions are made somewhere else.</p>
+      <p class="pq-attr">National Parliamentarian · 30 · West Africa</p>
+    </div>
+
+    <p>These figures are worth pausing on, because the temptation in advocacy framing is to read them as evidence that young leaders are exhausted, traumatized, or insufficiently resilient. The interview material suggests something different. The respondents who described considering exit were, in most cases, doing the math. They were weighing low staff support, financial strain, party fragility, marginalization, and personal risk against the alternative of leaving. For many, exit was the conclusion of a coherent calculation, not a failure of will.</p>
+
+    <h3>The texture of burnout</h3>
+
+    <p>The burnout described by respondents has a particular character. It is not primarily the burnout of overwork, though the workload is significant. It is the burnout of working hard inside an institution while becoming increasingly convinced that the institution is not configured to allow the work to land. Respondents described drafting amendments that were never tabled, building constituency programs that were defunded after a year, mediating between communities at personal cost only to see decisions made by leadership that ignored the mediation, and spending months on a policy file that was reassigned to a senior member at the moment it became politically valuable.</p>
+
+    <p>This is structural burnout, not personal burnout. The standard remedies of self-care, peer support, and time management address it only at the margins. The respondents who described the most severe burnout were not the ones working the most hours. They were the ones whose work was most consistently disconnected from outcomes they could see.</p>
+
+    <div class="iq">
+      <p class="iq-text">The threats started after I voted on land reform. By then I had a daughter. I could survive political pressure, but I could not ask my family to keep living with that fear. So I left.</p>
+      <p class="iq-attr">Former State Legislator · 32 · Latin America</p>
+    </div>
+
+    <h3>What drives the burnout</h3>
+
+    <p>The 55 percent burnout figure becomes more diagnostic when broken into causes. Asked which factors contributed most to their burnout or disillusionment, the most commonly named driver was overwork, cited by an estimated 68% of respondents who reported burnout. The second was the slow pace of change, named by 61%. Lack of staff was a direct cause for an estimated 58%, and lack of real power for 54%. Financial stress was named by 49%, party conflict by 42%, and online harassment by 35%.</p>
+
+    <p>The composition of these drivers is itself a finding. The top three causes of burnout in this sample are not personal failings or unmanageable workloads in the abstract. They are: doing too much (overwork), being unable to make a difference (slow pace of change), and being asked to do the work without the team to support it (lack of staff). All three are direct consequences of the structural conditions documented earlier in the report. The young officials in this sample are not burning out because politics is hard. They are burning out because politics is structured to be hard in ways their senior colleagues are insulated from.</p>
+
+    <h3>Harassment and the gendered cost of office</h3>
+
+    <p>The 32 percent harassment figure understates the texture of the problem because it averages across a sample with very different exposure. When the harassment data is broken down by type, an estimated 23% of all respondents reported online harassment only, 5% reported offline or in-person harassment only, and 4% reported both. Online harassment is the dominant modality for this generation of officials.</p>
+
+    <p>The gender disaggregation is even more revealing. Among women in the sample, an estimated 48% reported some form of harassment, intimidation, or threats, compared with 19% of men. Online harassment, in particular, was reported by a substantial majority of women, including organized harassment campaigns coordinated across platforms, sustained gendered abuse, and the specific category of intimate harassment that targets young women in public roles. The 32 percent average obscures the fact that for women, harassment is closer to a default condition of holding office than an exception to it.</p>
+
+    <p>The 25 percent safety figure, the share of respondents whose safety concerns directly affected their willingness to continue in politics, is similarly concentrated. The respondents who described threats and intimidation in the open-response material were disproportionately women, disproportionately drawn from systems with weak rule of law, and disproportionately working on issues that intersect with land, gender, religion, or organized economic interests. The headline figure obscures that for some subsets of young officials, the personal cost of remaining in politics is not abstract. It includes their families.</p>
+
+    <p>None of the political systems represented in the sample have institutional responses to this problem that respondents described as adequate. Harassment response, when it exists, is typically reactive rather than preventive, channeled through party structures that may be themselves part of the problem, and dependent on the willingness of police or prosecutors to take threats against young politicians seriously, which respondents reported was inconsistent at best.</p>
+
+    <h3>An unevenly distributed risk</h3>
+
+    <p>The combined effect is that exit is not evenly distributed. The young officials most likely to leave are those at the intersection of multiple vulnerabilities. Women working on contested issues. Officials in systems with weak protective infrastructure. Officials without family wealth to absorb the financial pressure. Officials whose party position is uncertain. Each of these factors compounds the others. A young official who faces only one of them can often persist. An official who faces three or four is making the calculation about exit on terms that the institution itself has structured against their continuation.</p>
+
+    <p>The reframing this requires is significant. The field has tended to treat burnout, harassment, and exit as wellbeing issues, addressed through individual support, mental health resources, and resilience training. These supports matter. But framed as wellbeing alone, they implicitly locate the problem in the young official rather than in the conditions. The data in this survey suggest the opposite. Young officials are responding rationally to conditions that have not been built to sustain them. The reform agenda must address the conditions, not only the response.</p>
+
+    <div class="kf">
+      <div class="kf-tag">Report Takeaway</div>
+      <p class="kf-text">Burnout, exit, and safety should not be discussed as if they are individual problems to which individual coping strategies are the answer. They are downstream effects of the structural conditions documented in the previous sections. The young officials who exit are typically the ones for whom multiple structural conditions have aligned to make continuation irrational. Reform that addresses only the symptoms will leave the underlying calculation unchanged.</p>
+    </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="chapter dark" id="part-07">
+  <div class="chapter-inner">
+    <header class="chapter-head">
+      <div class="chapter-num">07.</div>
+      <div class="chapter-eyebrow">Part Seven · Synthesis</div>
+      <h2 class="chapter-title">How the system <em>looks</em> from inside it.</h2>
+      <p class="chapter-deck">The encouragement infrastructure has been built; the support infrastructure has not.</p>
+    </header>
+    <div class="prose">
+      <p class="lede">The survey asked respondents to step back and describe their political system as a whole. The picture they drew was consistent.</p>
+
+    <p>Seventy percent said young elected officials are not really supported, or not supported at all, after winning office in their country or political system. Seventy-five percent characterized their political system using one of two negative descriptions: either that it encourages young people to run but does not support them after they win, or that it uses young candidates mostly symbolically.</p>
+
+    <div class="stat-strip" style="--cols: 2;">
+      <div class="stat-cell">
+        <div class="stat-cell-meta">Q72</div>
+        <div class="stat-cell-num">70%</div>
+        <div class="stat-cell-label">said young officials are not really supported after winning.</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-cell-meta">Q73</div>
+        <div class="stat-cell-num">75%</div>
+        <div class="stat-cell-label">described their system using a negative or symbolic retention model.</div>
+      </div>
+    </div>
+
+    <p>These are not findings about personal frustration. They are comparative system-level judgments offered by people who hold or have held office in the systems they are describing. The youth political encouragement infrastructure has been built, in their account. The youth political support infrastructure has not.</p>
+
+    <h3>The asymmetry between recruitment and sustenance</h3>
+
+    <p>The 71 percent agreement with the statement that political systems are better at recruiting young candidates than sustaining young leaders is the cleanest summary of the entire study. It is the finding the report's title is built on, and it is the finding that organizes the recommendations that follow. The asymmetry it describes is not accidental. The infrastructure for recruitment, including youth wings, candidate training programs, electoral quotas, donor funding for first-time campaigns, has been built deliberately over the past two decades. The infrastructure for sustenance has not.</p>
+
+    <p>Recruitment is, in an important sense, the easier of the two problems. It is event-shaped. It runs on the cycle of an election. It produces measurable outputs in the form of candidates filed and seats won. The institutions that fund it can attach their name to a cohort of new entrants and demonstrate impact. Sustenance is harder. It runs on the cycle of a term in office and the years that follow. Its outputs are diffuse and slow to materialize. Its measurable indicators are negative ones, the absence of exit, the absence of demoralization, the persistence of careers that would otherwise have ended.</p>
+
+    <p>The result is a field that has built sophisticated machinery for one half of the youth political career and almost no machinery for the other. The respondents in this study are the people on whom the asymmetry lands.</p>
+
+    <h3>What the system looks like to those inside it</h3>
+
+    <p>The open-response material from this survey produced a recurring set of metaphors that respondents reached for unprompted to describe their experience. Several described being recruited as candidates and then "left on the doorstep" of the institution. Others described the political system as having "opened a door but not a path." One referred to the experience as "being given the costume but not the role." These are not analytic statements. They are the way young officials describe the texture of an experience the report is attempting to measure quantitatively.</p>
+
+    <p>The metaphors point in the same direction. The institution presents an image of inclusion that is real at the threshold and dissolves once the threshold has been crossed. The young official who entered believing that the encouragement infrastructure they encountered as a candidate would be matched by an equivalent support infrastructure inside the institution discovers, often in the first six months, that it will not be. The disillusionment that 75 percent of respondents described, which expressed itself as the negative system characterization in Q73, is the cumulative effect of that discovery across a term in office.</p>
+
+    <div class="kf">
+      <div class="kf-tag">Report Takeaway</div>
+      <p class="kf-text">The 71 percent agreement with the statement that political systems are better at recruiting young candidates than sustaining young leaders is the cleanest summary of the entire study. It is the finding the report's title is built on, and it is the finding that organizes the recommendations that follow.</p>
+    </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="chapter" id="part-08">
+  <div class="chapter-inner">
+    <header class="chapter-head">
+      <div class="chapter-num">08.</div>
+      <div class="chapter-eyebrow">Part Eight · The Order</div>
+      <h2 class="chapter-title">Ranking the <em>barriers.</em></h2>
+      <p class="chapter-deck">Late in the survey, respondents were asked to rank the five barriers from most to least important. The order they produced is itself one of the findings.</p>
+    </header>
+    <div class="prose">
+      <p class="lede">The Q78 ranking is one of the most analytically important moments in the survey because it forces respondents to compare the five barriers directly. The order they produced is not the order most outside observers would predict. Coverage of young politicians tends to lead with money or with burnout. The respondents themselves placed institutional under-support and party gatekeeping at the top, with financial strain at the bottom.</p>
+
+    <table class="rank-table">
+      <thead>
+        <tr>
+          <th style="width: 14mm;">Rank</th>
+          <th>Barrier</th>
+          <th class="r">Personal impact</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="rank">01</td>
+          <td>Lack of staff or institutional support</td>
+          <td class="impact">36%</td>
+        </tr>
+        <tr>
+          <td class="rank">02</td>
+          <td>Party displacement and renomination failure</td>
+          <td class="impact">25%</td>
+        </tr>
+        <tr>
+          <td class="rank">03</td>
+          <td>Limited power and marginalization in office</td>
+          <td class="impact">15%</td>
+        </tr>
+        <tr>
+          <td class="rank">04</td>
+          <td>Burnout, harassment, risk, and disillusionment</td>
+          <td class="impact">10%</td>
+        </tr>
+        <tr>
+          <td class="rank">05</td>
+          <td>Financial and career instability</td>
+          <td class="impact">14%</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p style="font-family: 'JetBrains Mono', monospace; font-size: 7pt; color: var(--ink-mute); letter-spacing: 0.1em; margin-top: -2mm; text-transform: uppercase;">Ranking from Q78. Personal impact: percentage identifying each as the single barrier that most affected their own career (Q79).</p>
+
+    <p style="margin-top: 6mm;">The interpretation is not that money does not matter. The interpretation is that money is the universal pressure behind everything, but the specific factors that determine whether a young official converts a first victory into a sustained career are institutional. Whether they have staff. Whether the party will renominate them. Whether they are given real responsibilities.</p>
+
+    <p>The ordering also clarifies something about the relationship between the categories. Burnout, harassment, and exit, which are the most visible parts of the problem in public coverage, sit at rank four. They are not the cause of the problem. They are the consequence. The respondents who burn out and exit are the ones for whom the structural conditions at ranks one through three have aligned to make continuation untenable. The implication is that reform aimed at the visible exit phenomena, mental health support, harassment response, peer networks, will not change the underlying trajectory unless the institutional conditions higher in the ranking are also addressed.</p>
+
+    <p>When asked which single reform would most improve retention, respondents clustered their answers around institutional measures: guaranteed staffing support, mentorship and training, leadership roles for young officials, and stronger party commitments to renomination. The convergence of the ranking with the reform preferences is itself a finding. The respondents are internally consistent. They identify institutional under-support as the leading barrier, name staffing as the reform that would most change their decision to stay, and place financial pressure last while still acknowledging it as a daily burden. The recommendations that follow are organized to honor that order.</p>
+    </div>
+  </div>
+</section>
+
+
+<section class="chapter" id="recommendations">
+  <div class="chapter-inner">
+    <header class="chapter-head">
+      <div class="chapter-num">ii.</div>
+      <div class="chapter-eyebrow">Recommendations</div>
+      <h2 class="chapter-title">What would change <em>the trajectory.</em></h2>
+      <p class="chapter-deck">Six recommendations derived directly from the survey findings, listed in the order respondents themselves implied through their answers.</p>
+    </header>
+    <div class="prose">
+      <div class="rec-list"><div class="rec">
+    <div class="rec-num">i.<small>Staffing</small></div>
+    <div>
+      <h3 class="rec-title">Build dedicated staffing infrastructure for young elected officials.</h3>
+      <p>The single most actionable finding in the survey is that 90 percent of respondents would be more likely to seek another term or higher office if they had access to a professional staffing ecosystem. Funders, parliaments, and political parties should establish staffing pipelines that include policy researchers, legislative assistants, communications staff, constituent service coordinators, and procedural advisers. Fellowship programs that embed trained staff into the offices of first-term young officials are a viable model and could be scaled internationally.</p>
+    </div>
+  </div>
+<div class="rec">
+    <div class="rec-num">ii.<small>Renomination</small></div>
+    <div>
+      <h3 class="rec-title">Create transparent and accountable renomination pathways.</h3>
+      <p>Thirty-nine percent of respondents struggled to secure renomination, and 81 percent agreed that parties use young candidates for visibility rather than long-term leadership. Parties should commit publicly to transparent criteria for renomination of first-term officials, including young members. Independent review mechanisms within parties would address the reality that many young officials are losing access to the ballot through opaque internal processes rather than electoral defeat.</p>
+    </div>
+  </div>
+<div class="rec">
+    <div class="rec-num">iii.<small>Power</small></div>
+    <div>
+      <h3 class="rec-title">Convert symbolic inclusion into real institutional power.</h3>
+      <p>Seventy-seven percent agreed that young officials are celebrated publicly but excluded from real decision-making. Legislatures and parties should actively place first-term young officials on committees that touch budgets, infrastructure, foreign affairs, and finance, not only on youth and gender portfolios. Mentorship pairings between senior and junior officials should be formalized rather than left to chance.</p>
+    </div>
+  </div>
+<div class="rec">
+    <div class="rec-num">iv.<small>Compensation</small></div>
+    <div>
+      <h3 class="rec-title">Address compensation and the cost of service.</h3>
+      <p>Eighty-three percent could not fully cover basic living expenses on their official compensation. Salary structures, housing allowances, travel reimbursement, and health benefits should be reviewed at every level of office. Where direct salary increases are politically difficult, public campaign finance and independent staff budgets can reduce the personal financial exposure of young officeholders.</p>
+    </div>
+  </div>
+<div class="rec">
+    <div class="rec-num">v.<small>Safety</small></div>
+    <div>
+      <h3 class="rec-title">Treat burnout, harassment, and safety as retention issues.</h3>
+      <p>Twenty-five percent reported that safety concerns directly affected their political continuation. These figures are higher among women and respondents in higher-risk political systems. Legislatures should establish security protocols, harassment response mechanisms, and confidential mental health support for young officials. Donors funding youth political programs should consider these as core infrastructure, not as soft additions.</p>
+    </div>
+  </div>
+<div class="rec">
+    <div class="rec-num">vi.<small>Measurement</small></div>
+    <div>
+      <h3 class="rec-title">Measure youth political success by retention, not entry.</h3>
+      <p>The dominant metric in the field, the proportion of young people elected, is no longer sufficient. The next phase of measurement should track whether young officials recontest, whether they are renominated, whether they advance, whether they hold real institutional positions, and whether they remain active in politics over a five and ten year horizon. A field that measures only entry will keep declaring victory while the pipeline continues to leak.</p>
+    </div>
+  </div></div>
+    </div>
+  </div>
+</section>
+
+
+<section class="chapter" id="conclusion">
+  <div class="chapter-inner">
+    <header class="chapter-head">
+      <div class="chapter-num">iii.</div>
+      <div class="chapter-eyebrow">In Closing</div>
+      <h2 class="chapter-title">Conclusion.</h2>
+      
+    </header>
+    <div class="prose">
+      <div class="pq">
+      <p class="pq-text">If I had been given two staff members and a clear path to renomination, I would probably still be there. It is not complicated. It is just that nobody thought it was worth building that kind of support for someone like me.</p>
+      <p class="pq-attr">Former National Parliamentarian · 32 · Southeast Asia</p>
+    </div>
+
+    <p class="lede">The political imagination of the past decade has been organized around the question of how to get young people into office. The survey behind this report suggests that the question for the next decade is different. It is what happens once they are in.</p>
+
+    <p>The 71 percent finding that runs through this study is not a failure of young people. It is a description of institutions that have learned how to recruit a new generation without learning how to keep them. The reforms that would change this are not exotic. Staff. Renomination security. Real committee assignments. A salary that covers rent. Protection against threats. Pathways to leadership that do not require waiting for the previous generation to leave.</p>
+
+    <p>What is missing is not the policy menu. What is missing is the recognition that the work is not done at the moment a young person wins. In many cases, that is the moment the work begins.</p>
+
+    
+
+    <div class="colophon span-all">
+      <strong>Centre for Youth Policy</strong><br>
+      Washington, DC · April 2026<br>
+      <em>Author: Sudhanshu Kaushik</em>
+    </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="chapter" id="methodology">
+  <div class="chapter-inner">
+    <header class="chapter-head">
+      <div class="chapter-num">A.</div>
+      <div class="chapter-eyebrow">Appendix A</div>
+      <h2 class="chapter-title">Methodology and <em>sample.</em></h2>
+      <p class="chapter-deck">A geographically diverse but non-representative sample of 100 young political actors, surveyed over twelve months and supplemented by qualitative interviews.</p>
+    </header>
+    <div class="prose">
+      <h3>Recruitment and fieldwork</h3>
+    <p>The 100 respondents were recruited through direct outreach, institutional partnerships, youth political networks, and leadership convenings, with selective snowball sampling to extend reach into different political systems. Fieldwork ran for twelve months between January 2025 and January 2026. The instrument was administered online in English, with optional follow-up conversations conducted virtually.</p>
+    <p>Several follow-up interviews were translated from local languages and have been lightly edited for clarity and anonymity. Quotes throughout this report are attributed only by role, age, and broad region, in line with consent protocols.</p>
+
+    <div class="fig">
+      <div class="fig-head">
+        <div class="fig-num">Fig. A1 · Q7</div>
+        <div>
+          <div class="fig-title">Where the respondents serve</div>
+          <div class="fig-deck">Regional distribution of the 100-respondent sample.</div>
+        </div>
+      </div>
+      <div class="fig-body">
+        <svg class="chart" viewBox="0 0 600 220" xmlns="http://www.w3.org/2000/svg">
+          <g transform="translate(120, 16)">
+            <!-- Asia 30 -->
+            <text x="-8" y="14" text-anchor="end" font-family="Newsreader" font-size="10" fill="#2e2a23">Asia</text>
+            <line x1="0" y1="14" x2="360" y2="14" stroke="#7a1d1d" stroke-width="1.4"/>
+            <circle cx="360" cy="14" r="8" fill="#7a1d1d"/>
+            <text x="356" y="18" font-family="Playfair Display" font-style="italic" font-weight="700" font-size="11" fill="#efe8d6" text-anchor="middle">30</text>
+
+            <text x="-8" y="42" text-anchor="end" font-family="Newsreader" font-size="10" fill="#2e2a23">Europe</text>
+            <line x1="0" y1="42" x2="312" y2="42" stroke="#7a1d1d" stroke-width="1.4"/>
+            <circle cx="312" cy="42" r="8" fill="#7a1d1d"/>
+            <text x="308" y="46" font-family="Playfair Display" font-style="italic" font-weight="700" font-size="11" fill="#efe8d6" text-anchor="middle">26</text>
+
+            <text x="-8" y="70" text-anchor="end" font-family="Newsreader" font-size="10" fill="#2e2a23">Africa</text>
+            <line x1="0" y1="70" x2="216" y2="70" stroke="#9c3535" stroke-width="1.4"/>
+            <circle cx="216" cy="70" r="8" fill="#9c3535"/>
+            <text x="212" y="74" font-family="Playfair Display" font-style="italic" font-weight="700" font-size="11" fill="#efe8d6" text-anchor="middle">18</text>
+
+            <text x="-8" y="98" text-anchor="end" font-family="Newsreader" font-size="10" fill="#2e2a23">Latin America</text>
+            <line x1="0" y1="98" x2="156" y2="98" stroke="#9c3535" stroke-width="1.4"/>
+            <circle cx="156" cy="98" r="8" fill="#9c3535"/>
+            <text x="152" y="102" font-family="Playfair Display" font-style="italic" font-weight="700" font-size="11" fill="#efe8d6" text-anchor="middle">13</text>
+
+            <text x="-8" y="126" text-anchor="end" font-family="Newsreader" font-size="10" fill="#2e2a23">MENA</text>
+            <line x1="0" y1="126" x2="96" y2="126" stroke="#9c3535" stroke-width="1.4"/>
+            <circle cx="96" cy="126" r="8" fill="#9c3535"/>
+            <text x="92" y="130" font-family="Playfair Display" font-style="italic" font-weight="700" font-size="11" fill="#efe8d6" text-anchor="middle">8</text>
+
+            <text x="-8" y="154" text-anchor="end" font-family="Newsreader" font-size="10" fill="#2e2a23">North America</text>
+            <line x1="0" y1="154" x2="60" y2="154" stroke="#9c3535" stroke-width="1.4"/>
+            <circle cx="60" cy="154" r="8" fill="#9c3535"/>
+            <text x="56" y="158" font-family="Playfair Display" font-style="italic" font-weight="700" font-size="11" fill="#efe8d6" text-anchor="middle">5</text>
+
+            <line x1="0" y1="180" x2="420" y2="180" stroke="#14110d" stroke-width="0.5"/>
+            <text x="0" y="195" font-family="JetBrains Mono" font-size="7" fill="#6c6557">0</text>
+            <text x="120" y="195" text-anchor="middle" font-family="JetBrains Mono" font-size="7" fill="#6c6557">10</text>
+            <text x="240" y="195" text-anchor="middle" font-family="JetBrains Mono" font-size="7" fill="#6c6557">20</text>
+            <text x="360" y="195" text-anchor="middle" font-family="JetBrains Mono" font-size="7" fill="#6c6557">30 RESPONDENTS</text>
+          </g>
+        </svg>
+      </div>
+      <div class="fig-source"><span>SOURCE · Q7 · n = 100</span><em>English-language administration likely under-samples non-anglophone systems.</em></div>
+    </div>
+
+    <h3>Office level and demographics</h3>
+    <p>Thirty-five percent served as national parliamentarians, 12 percent in national executive positions, 25 percent at the state or regional level, and 28 percent at the local level. Women made up 44 percent of the sample. The average age was 27, with respondents ranging from 18 to 32.</p>
+
+    <h3>Ethics and consent</h3>
+    <p>All respondents provided informed consent. Direct quotes are anonymized by role, age, and broad sub-region. Identifying details have been removed from within quotations. For respondents working in higher-risk political contexts, additional anonymization measures were applied. The Centre for Youth Policy obtained explicit re-consent before publication for all named direct quotations in this report.</p>
+
+    <h3>Limitations and caveats</h3>
+    <p>The sample of 100 respondents is geographically and substantively diverse but is not statistically representative of all young elected or appointed officials globally. Recruitment relied on direct outreach, institutional partnerships, youth political networks, and selective snowball sampling, which introduces self-selection bias.</p>
+    <p>The instrument was administered in English, which likely favored internationally connected and English-speaking respondents and underrepresents young officials in non-English political systems.</p>
+    <p>Several follow-up interviews were translated, lightly reconstructed for clarity, and anonymized. Findings should be read as comparative and directional. The Centre for Youth Policy welcomes replication of this work in additional languages and political systems and considers expanded multi-language survey rounds a priority for the next phase of research.</p>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<!-- ============ FOOTER ============ -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-mark"><em>After They Win</em></div>
+    <div class="footer-tag">Centre for Youth Policy · April 2026</div>
+
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>About this report</h4>
+        <p>A twelve-month study of 100 young elected and appointed officials across six world regions, published April 2026 by the Centre for Youth Policy.</p>
+        <p>Authored by Sudhanshu Kaushik, a doctoral candidate at Johns Hopkins University&rsquo;s School of Advanced International Studies. Fieldwork January 2025 to January 2026.</p>
+        <p style="margin-top: 18px;">For inquiries, correspondence, or to share comparable work, write to <a href="mailto:Sudhanshu@centreforyouthpolicy.org" style="display: inline; color: #d97757; text-decoration: none; border-bottom: 0.5px solid #6c6557;">Sudhanshu@centreforyouthpolicy.org</a>.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Contents</h4>
+        <a href="#summary">Executive summary</a>
+        <a href="#part-04">The staffing gap</a>
+        <a href="#recommendations">Recommendations</a>
+        <a href="#methodology">Methodology</a>
+      </div>
+      <div class="footer-col">
+        <h4>Correspondence</h4>
+        <a href="mailto:Sudhanshu@centreforyouthpolicy.org">Sudhanshu@centreforyouthpolicy.org</a>
+        <a href="#">Press inquiries</a>
+        <a href="#">Download PDF</a>
+      </div>
+    </div>
+
+    <div class="footer-fine">
+      <span>© 2026 Centre for Youth Policy. All rights reserved.</span>
+      <span>n = 100 · Fieldwork Jan 2025 – Jan 2026</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* =================================================================
+   ANIMATION RUNTIME
+   ================================================================= */
+
+const TWEAK_DEFAULTS = {
+  animations: true,
+  animSpeed: 1,
+  animStyle: "pronounced",
+  countUp: true,
+  drawCharts: true
+};
+
+/* ---------- 1. Smooth-scroll anchor highlight ---------- */
+const navLinks = document.querySelectorAll('.topnav-links a');
+const navSections = ['contents', 'summary', 'part-04', 'recommendations', 'methodology'];
+window.addEventListener('scroll', () => {
+  const y = window.scrollY + 120;
+  let active = '';
+  navSections.forEach(id => {
+    const el = document.getElementById(id);
+    if (el && el.offsetTop <= y) active = id;
+  });
+  navLinks.forEach(a => {
+    a.classList.toggle('active', a.getAttribute('href') === '#' + active);
+  });
+}, { passive: true });
+
+/* ---------- 2. Tag elements for reveal ---------- */
+const REVEAL_SELECTORS = [
+  '.chapter-num', '.chapter-eyebrow', '.chapter-title', '.chapter-deck',
+  '.prose > p', '.prose > .lede', '.prose > h3',
+  '.prose > .iq', '.prose > .kf', '.prose > blockquote',
+  '.pq', '.fig', '.stat-strip', '.rank-table',
+  '.rec',
+  '.toc-row',
+];
+function tagReveals() {
+  document.querySelectorAll(REVEAL_SELECTORS.join(',')).forEach(el => {
+    el.classList.add('reveal');
+  });
+  // Hero pulls already shown — no reveal
+  // Stagger items inside grouped containers
+  document.querySelectorAll('.stat-strip').forEach(strip => {
+    [...strip.querySelectorAll('.stat-cell')].forEach((c, i) => {
+      c.classList.add('reveal');
+      c.style.setProperty('--reveal-delay', (i * 100) + 'ms');
+    });
+  });
+  // Stagger rec items inside rec-list
+  [...document.querySelectorAll('.rec')].forEach((r, i) => {
+    r.style.setProperty('--reveal-delay', ((i % 3) * 80) + 'ms');
+  });
+}
+tagReveals();
+
+/* ---------- 3. Reveal observer ---------- */
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('in');
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { rootMargin: '0px 0px -10% 0px', threshold: 0.05 });
+function observeReveals() {
+  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+}
+observeReveals();
+
+/* ---------- 4. Tag chart elements (SVG) for animation ---------- */
+function tagChart(svg) {
+  svg.querySelectorAll('line').forEach(line => {
+    if (line.classList.contains('grid')) return;
+    const x1 = +line.getAttribute('x1') || 0;
+    const x2 = +line.getAttribute('x2') || 0;
+    const y1 = +line.getAttribute('y1') || 0;
+    const y2 = +line.getAttribute('y2') || 0;
+    const len = Math.hypot(x2 - x1, y2 - y1);
+    // Treat lines as bars (mostly horizontal) or lines
+    if (Math.abs(y2 - y1) < 2 && len > 20) {
+      line.classList.add('anim-bar');
+      line.setAttribute('transform-origin', x1 + 'px ' + y1 + 'px');
+      line.style.transformOrigin = x1 + 'px ' + y1 + 'px';
+    } else if (len > 4) {
+      line.classList.add('anim-line');
+      line.style.setProperty('--line-len', len);
+    }
+  });
+  svg.querySelectorAll('rect').forEach(rect => {
+    rect.classList.add('anim-bar');
+    const x = +rect.getAttribute('x') || 0;
+    const y = +rect.getAttribute('y') || 0;
+    rect.style.transformOrigin = x + 'px ' + y + 'px';
+  });
+  svg.querySelectorAll('circle').forEach(c => {
+    c.classList.add('anim-dot');
+    const cx = +c.getAttribute('cx') || 0;
+    const cy = +c.getAttribute('cy') || 0;
+    // For SVG transform-origin, use percentage doesn't work; use px
+    c.style.transformOrigin = cx + 'px ' + cy + 'px';
+    // We need the parent <g>'s translate to be accounted; easier: pop dot scale by adding transform-box
+    c.style.transformBox = 'fill-box';
+    c.style.transformOrigin = 'center';
+  });
+  svg.querySelectorAll('path').forEach(p => {
+    try {
+      const len = p.getTotalLength?.() || 200;
+      if (len > 4) {
+        p.classList.add('anim-line');
+        p.style.setProperty('--line-len', len);
+      }
+    } catch(e) {}
+  });
+  // Stagger inside chart so bars don't all fire at once
+  const bars = svg.querySelectorAll('.anim-bar, .anim-dot');
+  bars.forEach((el, i) => {
+    el.style.transitionDelay = (i * 80) + 'ms';
+  });
+}
+document.querySelectorAll('.chart').forEach(tagChart);
+
+/* Chart-in observer */
+const chartObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('in');
+      chartObserver.unobserve(entry.target);
+    }
+  });
+}, { rootMargin: '0px 0px -15% 0px', threshold: 0.15 });
+document.querySelectorAll('.chart').forEach(svg => chartObserver.observe(svg));
+
+/* ---------- 5. Number count-up ---------- */
+const NUMERIC_SELECTORS = ['.hero-pull-num', '.stat-cell-num', '.rank-table .impact'];
+function parseNum(text) {
+  const m = text.match(/(-?\d+(?:\.\d+)?)/);
+  if (!m) return null;
+  return { value: parseFloat(m[1]), prefix: text.slice(0, m.index), suffix: text.slice(m.index + m[1].length) };
+}
+function setupCountUp(el) {
+  const original = el.textContent.trim();
+  const parsed = parseNum(original);
+  if (!parsed) return;
+  el.dataset.original = original;
+  el.dataset.target = parsed.value;
+  el.dataset.prefix = parsed.prefix;
+  el.dataset.suffix = parsed.suffix;
+}
+function runCountUp(el, duration = 1400) {
+  const target = parseFloat(el.dataset.target);
+  const prefix = el.dataset.prefix || '';
+  const suffix = el.dataset.suffix || '';
+  const isInt = target % 1 === 0;
+  const start = performance.now();
+  function tick(now) {
+    const t = Math.min(1, (now - start) / duration);
+    const eased = 1 - Math.pow(1 - t, 3);
+    const v = target * eased;
+    el.textContent = prefix + (isInt ? Math.round(v) : v.toFixed(1)) + suffix;
+    if (t < 1) requestAnimationFrame(tick);
+    else el.textContent = el.dataset.original;
+  }
+  requestAnimationFrame(tick);
+}
+document.querySelectorAll(NUMERIC_SELECTORS.join(',')).forEach(setupCountUp);
+
+const countObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const el = entry.target;
+      if (TWEAK_STATE.countUp && TWEAK_STATE.animations && el.dataset.target !== undefined) {
+        runCountUp(el, 1400 / TWEAK_STATE.animSpeed);
+      }
+      countObserver.unobserve(el);
+    }
+  });
+}, { rootMargin: '0px 0px -10% 0px', threshold: 0.4 });
+document.querySelectorAll(NUMERIC_SELECTORS.join(',')).forEach(el => countObserver.observe(el));
+
+/* Hero pulls — kick the count-up immediately on load */
+window.addEventListener('load', () => {
+  if (!TWEAK_STATE.animations || !TWEAK_STATE.countUp) return;
+  document.querySelectorAll('.hero-pull-num').forEach((el, i) => {
+    if (el.dataset.target !== undefined) {
+      setTimeout(() => runCountUp(el, 1600 / TWEAK_STATE.animSpeed), 300 + i * 180);
+    }
+  });
+});
+
+/* ---------- 6. Tweak state + apply ---------- */
+const TWEAK_STATE = { ...TWEAK_DEFAULTS };
+
+function applyTweaks(state) {
+  Object.assign(TWEAK_STATE, state);
+  const root = document.documentElement;
+
+  // Master toggle
+  document.body.classList.toggle('anim-on', !!state.animations);
+  if (!state.animations) {
+    // Snap everything in
+    document.querySelectorAll('.reveal').forEach(el => el.classList.add('in'));
+    document.querySelectorAll('.chart').forEach(el => el.classList.add('in'));
+    // Restore numbers to original
+    document.querySelectorAll('[data-original]').forEach(el => {
+      el.textContent = el.dataset.original;
+    });
+  }
+
+  // Speed
+  const speed = state.animSpeed || 1;
+  const baseDur = 800 / speed;
+  const baseStagger = 80 / speed;
+  root.style.setProperty('--anim-duration', baseDur + 'ms');
+  root.style.setProperty('--anim-stagger', baseStagger + 'ms');
+
+  // Style — distance + intensity
+  let dist = '28px';
+  if (state.animStyle === 'pronounced') dist = '64px';
+  else if (state.animStyle === 'minimal') dist = '12px';
+  else if (state.animStyle === 'fade-only') dist = '0px';
+  root.style.setProperty('--anim-distance', dist);
+}
+
+/* Initialize */
+applyTweaks(TWEAK_STATE);
+</script>
+
+</body>
+</html>
