@@ -567,6 +567,56 @@
   }
   .span-all { grid-column: 1 / -1; }
 
+  /* ============ COUNTRY GRID (Appendix C) ============ */
+  .country-grid {
+    max-width: var(--measure-wide);
+    margin: 20px auto 40px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 48px;
+    row-gap: 0;
+  }
+  .country-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 12px 4px;
+    border-bottom: 0.5px solid var(--rule-soft);
+  }
+  .country-row .name {
+    font-family: 'Newsreader', Georgia, serif;
+    font-size: 17px;
+    color: var(--ink);
+  }
+  .country-row .name small {
+    display: block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.18em;
+    color: var(--ink-faint);
+    text-transform: uppercase;
+    margin-top: 3px;
+  }
+  .country-row .count {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-weight: 700;
+    color: var(--accent);
+    font-size: 22px;
+    line-height: 1;
+  }
+  .country-region-meta {
+    font-family: 'Newsreader', Georgia, serif;
+    font-style: italic;
+    font-size: 16px;
+    color: var(--ink-mute);
+    margin: 0 auto 8px;
+    max-width: var(--measure);
+  }
+  @media (max-width: 720px) {
+    .country-grid { grid-template-columns: 1fr; column-gap: 0; }
+  }
+
 /* ============ RANKING TABLE ============ */
   .rank-table {
     max-width: var(--measure-wide);
@@ -989,6 +1039,7 @@
       <li class="toc-row"><a href="#conclusion"><span class="toc-num">iii.</span><span class="toc-label">Conclusion</span></a></li>
       <li class="toc-row"><a href="#methodology"><span class="toc-num">A.</span><span class="toc-label">Methodology and sample</span></a></li>
       <li class="toc-row"><a href="Survey Instrument.html"><span class="toc-num">B.</span><span class="toc-label">Survey instrument <em>The complete eighty-six-question instrument. Opens in a new page.</em></span></a></li>
+      <li class="toc-row"><a href="#countries"><span class="toc-num">C.</span><span class="toc-label">Country distribution <em>Where the 100 respondents serve, by region, sub-region, and country.</em></span></a></li>
     </ul>
   </div>
 </section>
@@ -2028,6 +2079,181 @@
   </div>
 </section>
 
+
+<section class="chapter" id="countries">
+  <div class="chapter-inner">
+    <header class="chapter-head">
+      <div class="chapter-num">C.</div>
+      <div class="chapter-eyebrow">Appendix C</div>
+      <h2 class="chapter-title">Country <em>distribution.</em></h2>
+      <p class="chapter-deck">Where the 100 respondents serve, broken down by region, sub-region, and country. Quotes elsewhere in this report are attributed only by role, age, and broad sub-region; the per-country counts are reproduced here for the methodological record.</p>
+    </header>
+    <div class="prose">
+      <p class="lede">The 100 respondents represent seventy-three countries across six world regions. Where multiple respondents share a country, role, age, and sub-region, additional anonymization measures were applied before publication.</p>
+
+      <div class="stat-strip" style="--cols: 3;">
+        <div class="stat-cell">
+          <div class="stat-cell-num">100</div>
+          <div class="stat-cell-label">respondents</div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-cell-num">73</div>
+          <div class="stat-cell-label">countries</div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-cell-num">6</div>
+          <div class="stat-cell-label">world regions</div>
+        </div>
+      </div>
+
+      <h3>Asia &middot; 30 respondents</h3>
+      <p class="country-region-meta">South Asia 12 &middot; Southeast Asia 10 &middot; East Asia 5 &middot; Central Asia 3.</p>
+      <div class="country-grid">
+        <div class="country-row"><span class="name">India <small>South Asia</small></span><span class="count">5</span></div>
+        <div class="country-row"><span class="name">Indonesia <small>Southeast Asia</small></span><span class="count">3</span></div>
+        <div class="country-row"><span class="name">Pakistan <small>South Asia</small></span><span class="count">3</span></div>
+        <div class="country-row"><span class="name">Philippines <small>Southeast Asia</small></span><span class="count">3</span></div>
+        <div class="country-row"><span class="name">Bangladesh <small>South Asia</small></span><span class="count">2</span></div>
+        <div class="country-row"><span class="name">South Korea <small>East Asia</small></span><span class="count">2</span></div>
+        <div class="country-row"><span class="name">Cambodia <small>Southeast Asia</small></span><span class="count">1</span></div>
+        <div class="country-row"><span class="name">Japan <small>East Asia</small></span><span class="count">1</span></div>
+        <div class="country-row"><span class="name">Kazakhstan <small>Central Asia</small></span><span class="count">1</span></div>
+        <div class="country-row"><span class="name">Kyrgyzstan <small>Central Asia</small></span><span class="count">1</span></div>
+        <div class="country-row"><span class="name">Malaysia <small>Southeast Asia</small></span><span class="count">1</span></div>
+        <div class="country-row"><span class="name">Mongolia <small>East Asia</small></span><span class="count">1</span></div>
+        <div class="country-row"><span class="name">Nepal <small>South Asia</small></span><span class="count">1</span></div>
+        <div class="country-row"><span class="name">Sri Lanka <small>South Asia</small></span><span class="count">1</span></div>
+        <div class="country-row"><span class="name">Taiwan <small>East Asia</small></span><span class="count">1</span></div>
+        <div class="country-row"><span class="name">Thailand <small>Southeast Asia</small></span><span class="count">1</span></div>
+        <div class="country-row"><span class="name">Uzbekistan <small>Central Asia</small></span><span class="count">1</span></div>
+        <div class="country-row"><span class="name">Vietnam <small>Southeast Asia</small></span><span class="count">1</span></div>
+      </div>
+
+      <h3>Europe &middot; 26 respondents</h3>
+      <p class="country-region-meta">Western Europe 14 &middot; Eastern Europe 12.</p>
+      <div class="country-grid">
+        <div class="country-row"><span class="name">France <small>Western Europe</small></span><span class="count">2</span></div>
+        <div class="country-row"><span class="name">Germany <small>Western Europe</small></span><span class="count">2</span></div>
+        <div class="country-row"><span class="name">Poland <small>Eastern Europe</small></span><span class="count">2</span></div>
+        <div class="country-row"><span class="name">Romania <small>Eastern Europe</small></span><span class="count">2</span></div>
+        <div class="country-row"><span class="name">United Kingdom <small>Western Europe</small></span><span class="count">2</span></div>
+        <div class="country-row"><span class="name">Belgium <small>Western Europe</small></span><span class="count">1</span></div>
+        <div class="country-row"><span class="name">Bulgaria <small>Eastern Europe</small></span><span class="count">1</span></div>
+        <div class="country-row"><span class="name">Croatia <small>Eastern Europe</small></span><span class="count">1</span></div>
+        <div class="country-row"><span class="name">Czech Republic <small>Eastern Europe</small></span><span class="count">1</span></div>
+        <div class="country-row"><span class="name">Estonia <small>Eastern Europe</small></span><span class="count">1</span></div>
+        <div class="country-row"><span class="name">Finland <small>Western Europe</small></span><span class="count">1</span></div>
+        <div class="country-row"><span class="name">Hungary <small>Eastern Europe</small></span><span class="count">1</span></div>
+        <div class="country-row"><span class="name">Ireland <small>Western Europe</small></span><span class="count">1</span></div>
+        <div class="country-row"><span class="name">Italy <small>Western Europe</small></span><span class="count">1</span></div>
+        <div class="country-row"><span class="name">Lithuania <small>Eastern Europe</small></span><span class="count">1</span></div>
+        <div class="country-row"><span class="name">Netherlands <small>Western Europe</small></span><span class="count">1</span></div>
+        <div class="country-row"><span class="name">Portugal <small>Western Europe</small></span><span class="count">1</span></div>
+        <div class="country-row"><span class="name">Serbia <small>Eastern Europe</small></span><span class="count">1</span></div>
+        <div class="country-row"><span class="name">Spain <small>Western Europe</small></span><span class="count">1</span></div>
+        <div class="country-row"><span class="name">Sweden <small>Western Europe</small></span><span class="count">1</span></div>
+        <div class="country-row"><span class="name">Ukraine <small>Eastern Europe</small></span><span class="count">1</span></div>
+      </div>
+
+      <h3>Africa &middot; 18 respondents</h3>
+      <p class="country-region-meta">West Africa 8 &middot; East Africa 6 &middot; Southern Africa 3 &middot; Central Africa 1.</p>
+      <div class="country-grid">
+        <div class="country-row"><span class="name">Ghana <small>West Africa</small></span><span class="count">2</span></div>
+        <div class="country-row"><span class="name">Kenya <small>East Africa</small></span><span class="count">2</span></div>
+        <div class="country-row"><span class="name">Nigeria <small>West Africa</small></span><span class="count">2</span></div>
+        <div class="country-row"><span class="name">South Africa <small>Southern Africa</small></span><span class="count">2</span></div>
+        <div class="country-row"><span class="name">Cameroon <small>Central Africa</small></span><span class="count">1</span></div>
+        <div class="country-row"><span class="name">Côte d&rsquo;Ivoire <small>West Africa</small></span><span class="count">1</span></div>
+        <div class="country-row"><span class="name">Ethiopia <small>East Africa</small></span><span class="count">1</span></div>
+        <div class="country-row"><span class="name">Liberia <small>West Africa</small></span><span class="count">1</span></div>
+        <div class="country-row"><span class="name">Rwanda <small>East Africa</small></span><span class="count">1</span></div>
+        <div class="country-row"><span class="name">Senegal <small>West Africa</small></span><span class="count">1</span></div>
+        <div class="country-row"><span class="name">Sierra Leone <small>West Africa</small></span><span class="count">1</span></div>
+        <div class="country-row"><span class="name">Tanzania <small>East Africa</small></span><span class="count">1</span></div>
+        <div class="country-row"><span class="name">Uganda <small>East Africa</small></span><span class="count">1</span></div>
+        <div class="country-row"><span class="name">Zimbabwe <small>Southern Africa</small></span><span class="count">1</span></div>
+      </div>
+
+      <h3>Latin America &middot; 13 respondents</h3>
+      <p class="country-region-meta">Spanning South America, Central America, and the Caribbean.</p>
+      <div class="country-grid">
+        <div class="country-row"><span class="name">Brazil <small>South America</small></span><span class="count">2</span></div>
+        <div class="country-row"><span class="name">Mexico <small>Central America</small></span><span class="count">2</span></div>
+        <div class="country-row"><span class="name">Argentina <small>South America</small></span><span class="count">1</span></div>
+        <div class="country-row"><span class="name">Bolivia <small>South America</small></span><span class="count">1</span></div>
+        <div class="country-row"><span class="name">Chile <small>South America</small></span><span class="count">1</span></div>
+        <div class="country-row"><span class="name">Colombia <small>South America</small></span><span class="count">1</span></div>
+        <div class="country-row"><span class="name">Costa Rica <small>Central America</small></span><span class="count">1</span></div>
+        <div class="country-row"><span class="name">Dominican Republic <small>Caribbean</small></span><span class="count">1</span></div>
+        <div class="country-row"><span class="name">Ecuador <small>South America</small></span><span class="count">1</span></div>
+        <div class="country-row"><span class="name">Guatemala <small>Central America</small></span><span class="count">1</span></div>
+        <div class="country-row"><span class="name">Peru <small>South America</small></span><span class="count">1</span></div>
+      </div>
+
+      <h3>Middle East and North Africa &middot; 8 respondents</h3>
+      <p class="country-region-meta">Spanning the Maghreb, the Levant, and the Mashreq.</p>
+      <div class="country-grid">
+        <div class="country-row"><span class="name">Tunisia <small>Maghreb</small></span><span class="count">2</span></div>
+        <div class="country-row"><span class="name">Egypt <small>Mashreq</small></span><span class="count">1</span></div>
+        <div class="country-row"><span class="name">Iraq <small>Mashreq</small></span><span class="count">1</span></div>
+        <div class="country-row"><span class="name">Jordan <small>Levant</small></span><span class="count">1</span></div>
+        <div class="country-row"><span class="name">Lebanon <small>Levant</small></span><span class="count">1</span></div>
+        <div class="country-row"><span class="name">Morocco <small>Maghreb</small></span><span class="count">1</span></div>
+        <div class="country-row"><span class="name">Palestine <small>Levant</small></span><span class="count">1</span></div>
+      </div>
+
+      <h3>North America &middot; 5 respondents</h3>
+      <p class="country-region-meta">United States and Canada.</p>
+      <div class="country-grid">
+        <div class="country-row"><span class="name">United States <small>North America</small></span><span class="count">3</span></div>
+        <div class="country-row"><span class="name">Canada <small>North America</small></span><span class="count">2</span></div>
+      </div>
+
+      <h3>Cross-cuts</h3>
+      <p>The country distribution above is reproduced from the respondent log used for fieldwork between January 2025 and January 2026. The same 100 respondents are also distributed across office levels and demographics as follows.</p>
+
+      <div class="stat-strip" style="--cols: 4;">
+        <div class="stat-cell">
+          <div class="stat-cell-num">35</div>
+          <div class="stat-cell-label">national parliamentarians</div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-cell-num">12</div>
+          <div class="stat-cell-label">in national executive positions</div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-cell-num">25</div>
+          <div class="stat-cell-label">at the state or regional level</div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-cell-num">28</div>
+          <div class="stat-cell-label">at the local level</div>
+        </div>
+      </div>
+
+      <div class="stat-strip" style="--cols: 3;">
+        <div class="stat-cell">
+          <div class="stat-cell-num">44%</div>
+          <div class="stat-cell-label">women</div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-cell-num">27</div>
+          <div class="stat-cell-label">average age</div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-cell-num">18&ndash;32</div>
+          <div class="stat-cell-label">age range</div>
+        </div>
+      </div>
+
+      <div class="kf" style="margin-top: 56px;">
+        <div class="kf-tag">A note on disclosure</div>
+        <div class="kf-text">Country counts are reproduced for methodological transparency. Direct quotations elsewhere in this report remain attributed only by role, age, and broad sub-region. In sub-regions where a single country contributed only one respondent, additional anonymization measures were applied before any quoted material was published.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
 </div>
 
 <!-- ============ FOOTER ============ -->
@@ -2050,6 +2276,7 @@
         <a href="#recommendations">Recommendations</a>
         <a href="#methodology">Methodology</a>
         <a href="Survey Instrument.html">Survey instrument</a>
+        <a href="#countries">Country distribution</a>
       </div>
       <div class="footer-col">
         <h4>Correspondence</h4>
