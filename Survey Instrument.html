@@ -1,0 +1,1248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Survey Instrument — After They Win</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;0,800;0,900;1,400;1,500&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,300;1,6..72,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #efe8d6;
+    --paper-deep: #e3dac3;
+    --paper-dark: #1a1814;
+    --ink: #14110d;
+    --ink-soft: #2e2a23;
+    --ink-mute: #6c6557;
+    --ink-faint: #a39c8c;
+    --rule: #14110d;
+    --rule-soft: #b3aa97;
+    --accent: #7a1d1d;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: 64px; }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Newsreader', Georgia, serif;
+    font-size: 17px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  /* Top nav (matches main) */
+  .topnav { position: sticky; top: 0; z-index: 100; background: rgba(239,232,214,0.92); backdrop-filter: blur(12px); border-bottom: 0.5px solid var(--rule-soft); }
+  .topnav-inner { max-width: 1200px; margin: 0 auto; padding: 14px 28px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+  .topnav-brand { font-family: 'Playfair Display', serif; font-style: italic; font-weight: 700; font-size: 17px; color: var(--ink); text-decoration: none; }
+  .topnav-brand .sub { font-family: 'JetBrains Mono', monospace; font-style: normal; font-weight: 400; font-size: 9px; letter-spacing: 0.22em; color: var(--ink-mute); text-transform: uppercase; display: block; margin-top: 2px; }
+  .topnav-back { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-mute); text-decoration: none; transition: color 0.15s; }
+  .topnav-back:hover { color: var(--accent); }
+
+  /* Header */
+  .pg-head { padding: 80px 28px 60px; border-bottom: 2.4px double var(--rule); }
+  .pg-head-inner { max-width: 720px; margin: 0 auto; }
+  .pg-num { font-family: 'Playfair Display', serif; font-style: italic; font-weight: 800; font-size: 56px; color: var(--accent); line-height: 1; margin-bottom: 8px; letter-spacing: -0.02em; }
+  .pg-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--ink-mute); padding-bottom: 14px; border-bottom: 0.5px solid var(--rule); margin-bottom: 22px; }
+  .pg-title { font-family: 'Playfair Display', serif; font-weight: 800; font-size: clamp(40px, 6vw, 64px); line-height: 0.95; letter-spacing: -0.025em; color: var(--ink); margin-bottom: 22px; }
+  .pg-title em { font-style: italic; font-weight: 500; color: var(--accent); }
+  .pg-deck { font-family: 'Newsreader', serif; font-style: italic; font-weight: 300; font-size: 22px; line-height: 1.45; color: var(--ink-soft); }
+
+  /* Survey body */
+  .survey-body { max-width: 720px; margin: 0 auto; padding: 60px 28px 100px; }
+  .survey-body p { margin-bottom: 24px; }
+  .survey-h { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 26px; line-height: 1.2; color: var(--ink); margin: 56px 0 24px; padding-bottom: 12px; border-bottom: 0.5px solid var(--rule); letter-spacing: -0.01em; }
+  .survey-h:first-child { margin-top: 0; }
+  .sq { display: grid; grid-template-columns: 50px 1fr; gap: 16px; padding: 22px 0; border-bottom: 0.5px solid var(--rule-soft); }
+  .sq:last-child { border-bottom: 0; }
+  .sq-n { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.16em; color: var(--accent); padding-top: 4px; font-weight: 600; }
+  .sq-t { font-family: 'Newsreader', serif; font-size: 17px; line-height: 1.55; color: var(--ink); margin-bottom: 10px; font-weight: 500; }
+  .sq-opts { font-family: 'Newsreader', serif; font-size: 15px; line-height: 1.6; color: var(--ink-soft); padding-left: 16px; }
+  .sq-opts li { margin-bottom: 4px; list-style: '— '; padding-left: 4px; }
+  .sq-meta { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.14em; color: var(--ink-faint); margin-top: 8px; text-transform: uppercase; }
+
+  /* Footer */
+  .site-footer { background: var(--paper-dark); color: #a09a8a; padding: 60px 28px 40px; text-align: center; }
+  .site-footer a { color: #d8d2c0; text-decoration: none; border-bottom: 0.5px solid #6c6557; transition: color 0.15s; }
+  .site-footer a:hover { color: #d97757; }
+  .site-footer p { font-family: 'Newsreader', serif; font-style: italic; font-size: 15px; margin-bottom: 16px; }
+  .site-footer .fine { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.16em; color: #6c6557; text-transform: uppercase; margin-top: 24px; padding-top: 24px; border-top: 0.5px solid #3d3a32; max-width: 720px; margin-left: auto; margin-right: auto; }
+</style>
+</head>
+<body>
+
+<nav class="topnav">
+  <div class="topnav-inner">
+    <a href="/" class="topnav-brand">
+      After They Win
+      <span class="sub">Centre for Youth Policy · 2026</span>
+    </a>
+    <a href="/" class="topnav-back">← Back to report</a>
+  </div>
+</nav>
+
+<header class="pg-head">
+  <div class="pg-head-inner">
+    <div class="pg-num">B.</div>
+    <div class="pg-eyebrow">Appendix B</div>
+    <h1 class="pg-title">Survey <em>instrument.</em></h1>
+    <p class="pg-deck">The complete eighty-six-question instrument administered to all 100 respondents between January 2025 and January 2026.</p>
+  </div>
+</header>
+
+<section class="survey-body">
+  <p style="font-style: italic; color: var(--ink-mute); margin-bottom: 6mm; font-size: 9pt;">The complete instrument is reproduced below. Open-response prompts have been condensed; multiple-choice options are listed as they appeared to respondents. Eighty-six questions across eleven sections.</p>
+
+<h3 class="survey-h">Section 1 · Screening and Consent</h3>
+<div class="sq">
+  <div class="sq-n">Q1</div>
+  <div>
+    <div class="sq-t">Are you currently or have you previously served in any of the following roles? Select all that apply.</div>
+    <ul class="sq-opts">
+      <li>Elected local/municipal official</li>
+      <li>Elected regional/state/provincial official</li>
+      <li>Elected national legislator/parliamentarian</li>
+      <li>Appointed government official</li>
+      <li>Political party official</li>
+      <li>Candidate for elected office</li>
+      <li>Staff member or adviser to an elected official</li>
+      <li>Other</li>
+    </ul>
+  </div>
+</div>
+<div class="sq">
+  <div class="sq-n">Q2</div>
+  <div>
+    <div class="sq-t">At what age did you first run for or enter public office/government service?</div>
+    <ul class="sq-opts">
+      <li>Open response</li>
+    </ul>
+  </div>
+</div>
+<div class="sq">
+  <div class="sq-n">Q3</div>
+  <div>
+    <div class="sq-t">At what age did you first win elected office or receive an official government appointment?</div>
+    <ul class="sq-opts">
+      <li>Open response</li>
+    </ul>
+  </div>
+</div>
+<div class="sq">
+  <div class="sq-n">Q4</div>
+  <div>
+    <div class="sq-t">What is your current status?</div>
+    <ul class="sq-opts">
+      <li>Currently serving in elected office</li>
+      <li>Currently serving in appointed office</li>
+      <li>Former elected official</li>
+      <li>Former appointed official</li>
+      <li>Candidate seeking office again</li>
+      <li>No longer active in formal politics</li>
+      <li>Other</li>
+    </ul>
+  </div>
+</div>
+<div class="sq">
+  <div class="sq-n">Q5</div>
+  <div>
+    <div class="sq-t">Do you consent to participate in this study?</div>
+    <ul class="sq-opts">
+      <li>Yes</li>
+      <li>No</li>
+    </ul>
+  </div>
+</div>
+<h3 class="survey-h">Section 2 · Background and Political Entry</h3>
+<div class="sq">
+  <div class="sq-n">Q6</div>
+  <div>
+    <div class="sq-t">Country of current or most recent political service:</div>
+    <ul class="sq-opts">
+      <li>Open response</li>
+    </ul>
+  </div>
+</div>
+<div class="sq">
+  <div class="sq-n">Q7</div>
+  <div>
+    <div class="sq-t">Region:</div>
+    <ul class="sq-opts">
+      <li>Africa</li>
+      <li>Asia</li>
+      <li>Europe</li>
+      <li>Latin America</li>
+      <li>Middle East and North Africa</li>
+      <li>North America</li>
+      <li>Other</li>
+    </ul>
+  </div>
+</div>
+<div class="sq">
+  <div class="sq-n">Q8</div>
+  <div>
+    <div class="sq-t">Gender identity:</div>
+    <ul class="sq-opts">
+      <li>Woman</li>
+      <li>Man</li>
+      <li>Non-binary</li>
+      <li>Prefer to self-describe</li>
+      <li>Prefer not to say</li>
+    </ul>
+  </div>
+</div>
+<div class="sq">
+  <div class="sq-n">Q9</div>
+  <div>
+    <div class="sq-t">Age:</div>
+    <ul class="sq-opts">
+      <li>Open response</li>
+    </ul>
+  </div>
+</div>
+<div class="sq">
+  <div class="sq-n">Q10</div>
+  <div>
+    <div class="sq-t">What level of office or government position do/did you hold?</div>
+    <ul class="sq-opts">
+      <li>Municipal/local</li>
+      <li>Regional/state/provincial</li>
+      <li>National</li>
+      <li>Supranational/regional body</li>
+      <li>Executive/government ministry</li>
+      <li>Party leadership role</li>
+      <li>Other</li>
+    </ul>
+  </div>
+</div>
+<div class="sq">
+  <div class="sq-n">Q11</div>
+  <div>
+    <div class="sq-t">How did you first enter politics or public life? Select all that apply.</div>
+    <ul class="sq-opts">
+      <li>Political party youth wing</li>
+      <li>Student politics</li>
+      <li>Civil society or NGO work</li>
+      <li>Social movement or protest movement</li>
+      <li>Family political background</li>
+      <li>Community organizing</li>
+      <li>Professional expertise</li>
+      <li>Digital/social media activism</li>
+      <li>Invitation from a party or senior leader</li>
+      <li>Independent candidacy</li>
+      <li>Other</li>
+    </ul>
+  </div>
+</div>
+<div class="sq">
+  <div class="sq-n">Q12</div>
+  <div>
+    <div class="sq-t">Which factor was most important in helping you first win or enter office?</div>
+    <ul class="sq-opts">
+      <li>Party nomination/support</li>
+      <li>Personal networks</li>
+      <li>Youth quota or reserved seat</li>
+      <li>Social movement support</li>
+      <li>Community reputation</li>
+      <li>Family/political connections</li>
+      <li>Personal financial resources</li>
+      <li>Digital campaign visibility</li>
+      <li>Civil society background</li>
+      <li>Other</li>
+    </ul>
+  </div>
+</div>
+<div class="sq">
+  <div class="sq-n">Q13</div>
+  <div>
+    <div class="sq-t">Before entering office, how prepared did you feel for the responsibilities of the role?</div>
+    <ul class="sq-opts">
+      <li>Very prepared</li>
+      <li>Somewhat prepared</li>
+      <li>Neither prepared nor unprepared</li>
+      <li>Somewhat unprepared</li>
+      <li>Very unprepared</li>
+    </ul>
+  </div>
+</div>
+<div class="sq">
+  <div class="sq-n">Q14</div>
+  <div>
+    <div class="sq-t">After entering office, did you receive any formal onboarding or training?</div>
+    <ul class="sq-opts">
+      <li>Yes, extensive training</li>
+      <li>Yes, limited training</li>
+      <li>No formal training</li>
+      <li>I had to seek training independently</li>
+      <li>Not applicable</li>
+    </ul>
+  </div>
+</div>
+<h3 class="survey-h">Section 3 · Political Retention and Career Continuity</h3>
+<div class="sq">
+  <div class="sq-n">Q15</div>
+  <div>
+    <div class="sq-t">Have you sought or do you plan to seek another term or higher office?</div>
+    <ul class="sq-opts">
+      <li>Yes, I have already sought another term</li>
+      <li>Yes, I plan to seek another term</li>
+      <li>Yes, I plan to seek higher office</li>
+      <li>No, I do not plan to continue in electoral politics</li>
+      <li>Unsure</li>
+    </ul>
+  </div>
+</div>
+<div class="sq">
+  <div class="sq-n">Q16</div>
+  <div>
+    <div class="sq-t">If you did not seek another term or are unsure, what are the main reasons? Select all that apply.</div>
+    <ul class="sq-opts">
+      <li>Lack of party support</li>
+      <li>Financial constraints</li>
+      <li>Career or income instability</li>
+      <li>Burnout</li>
+      <li>Family responsibilities</li>
+      <li>Safety or harassment concerns</li>
+      <li>Limited influence in office</li>
+      <li>Lack of staff or institutional support</li>
+      <li>Disillusionment with politics</li>
+      <li>Difficulty securing renomination</li>
+      <li>Electoral defeat</li>
+      <li>Better opportunities outside politics</li>
+      <li>Other</li>
+    </ul>
+  </div>
+</div>
+<div class="sq">
+  <div class="sq-n">Q17</div>
+  <div>
+    <div class="sq-t">How likely are you to still be active in formal politics five years from now?</div>
+    <ul class="sq-opts">
+      <li>Very likely</li>
+      <li>Somewhat likely</li>
+      <li>Unsure</li>
+      <li>Somewhat unlikely</li>
+      <li>Very unlikely</li>
+    </ul>
+  </div>
+</div>
+<div class="sq">
+  <div class="sq-n">Q18</div>
+  <div>
+    <div class="sq-t">Which best describes your political career so far?</div>
+    <ul class="sq-opts">
+      <li>I entered office and have continued to progress</li>
+      <li>I entered office but have struggled to sustain my career</li>
+      <li>I entered office but was pushed out or blocked from continuing</li>
+      <li>I entered office but chose to leave</li>
+      <li>I entered politics but have not yet won elected office</li>
+      <li>Other</li>
+    </ul>
+  </div>
+</div>
+<div class="sq">
+  <div class="sq-n">Q19</div>
+  <div>
+    <div class="sq-t">In your view, is it easier for young people to win office than to remain in politics long-term?</div>
+    <ul class="sq-opts">
+      <li>Strongly agree</li>
+      <li>Agree</li>
+      <li>Neither agree nor disagree</li>
+      <li>Disagree</li>
+      <li>Strongly disagree</li>
+    </ul>
+  </div>
+</div>
+<div class="sq">
+  <div class="sq-n">Q20</div>
+  <div>
+    <div class="sq-t">Please explain your answer.</div>
+    <ul class="sq-opts">
+      <li>Open response</li>
+    </ul>
+  </div>
+</div>
+<h3 class="survey-h">Section 4 · Barrier 1 — Party Displacement and Renomination Failure</h3>
+<div class="sq">
+  <div class="sq-n">Q21</div>
+  <div>
+    <div class="sq-t">Did a political party support your first election or appointment?</div>
+    <ul class="sq-opts">
+      <li>Yes</li>
+      <li>No</li>
+      <li>I ran as an independent</li>
+      <li>Not applicable</li>
+    </ul>
+  </div>
+</div>
+<div class="sq">
+  <div class="sq-n">Q22</div>
+  <div>
+    <div class="sq-t">How important was party support to your initial political success?</div>
+    <ul class="sq-opts">
+      <li>Essential</li>
+      <li>Very important</li>
+      <li>Somewhat important</li>
+      <li>Not very important</li>
+      <li>Not important at all</li>
+    </ul>
+  </div>
+</div>
+<div class="sq">
+  <div class="sq-n">Q23</div>
+  <div>
+    <div class="sq-t">After you entered office, did your party continue to support your political career?</div>
+    <ul class="sq-opts">
+      <li>Yes, strongly</li>
+      <li>Yes, somewhat</li>
+      <li>Support decreased over time</li>
+      <li>No, support was withdrawn</li>
+      <li>I was never supported by a party</li>
+      <li>Not applicable</li>
+    </ul>
+  </div>
+</div>
+<div class="sq">
+  <div class="sq-n">Q24</div>
+  <div>
+    <div class="sq-t">Have you ever faced difficulty securing renomination, reselection, or party backing for a future race?</div>
+    <ul class="sq-opts">
+      <li>Yes</li>
+      <li>No</li>
+      <li>Not yet applicable</li>
+      <li>Prefer not to say</li>
+    </ul>
+  </div>
+</div>
+<div class="sq">
+  <div class="sq-n">Q25</div>
+  <div>
+    <div class="sq-t">If yes, what were the main reasons? Select all that apply.</div>
+    <ul class="sq-opts">
+      <li>Party preferred an older or more senior candidate</li>
+      <li>Factional politics</li>
+      <li>Lack of money or fundraising capacity</li>
+      <li>Internal party competition</li>
+      <li>Gender, caste, ethnic, racial, religious, or class bias</li>
+      <li>My views conflicted with party leadership</li>
+      <li>I was seen as too independent</li>
+      <li>I lacked patronage networks</li>
+      <li>The seat was promised to someone else</li>
+      <li>Other</li>
+    </ul>
+  </div>
+</div>
+<div class="sq">
+  <div class="sq-n">Q26</div>
+  <div>
+    <div class="sq-t">To what extent do you agree with the following statement: “Young candidates are often used by parties for visibility, but not supported for long-term leadership.”</div>
+    <ul class="sq-opts">
+      <li>Strongly agree</li>
+      <li>Agree</li>
+      <li>Neither agree nor disagree</li>
+      <li>Disagree</li>
+      <li>Strongly disagree</li>
+    </ul>
+  </div>
+</div>
+<div class="sq">
+  <div class="sq-n">Q27</div>
+  <div>
+    <div class="sq-t">Did you feel that your youth identity was more valued during the campaign than during your time in office?</div>
+    <ul class="sq-opts">
+      <li>Strongly agree</li>
+      <li>Agree</li>
+      <li>Neither agree nor disagree</li>
+      <li>Disagree</li>
+      <li>Strongly disagree</li>
+    </ul>
+  </div>
+</div>
+<div class="sq">
+  <div class="sq-n">Q28</div>
+  <div>
+    <div class="sq-t">In your political system, how common is it for young elected officials to be replaced after one term by older or better-connected candidates?</div>
+    <ul class="sq-opts">
+      <li>Very common</li>
+      <li>Somewhat common</li>
+      <li>Rare</li>
+      <li>Very rare</li>
+      <li>I don’t know</li>
+    </ul>
+  </div>
+</div>
+<div class="sq">
+  <div class="sq-n">Q29</div>
+  <div>
+    <div class="sq-t">Have you personally experienced or observed party displacement of young elected officials?</div>
+    <ul class="sq-opts">
+      <li>Yes, personally experienced</li>
+      <li>Yes, observed it happen to others</li>
+      <li>Both personally experienced and observed</li>
+      <li>No</li>
+      <li>Unsure</li>
+    </ul>
+  </div>
+</div>
+<div class="sq">
+  <div class="sq-n">Q30</div>
+  <div>
+    <div class="sq-t">Please describe one example of party support, party abandonment, or party displacement that shaped your political career.</div>
+    <ul class="sq-opts">
+      <li>Open response</li>
+    </ul>
+  </div>
+</div>
+<h3 class="survey-h">Section 5 · Barrier 2 — Financial and Career Instability</h3>
+<div class="sq">
+  <div class="sq-n">Q31</div>
+  <div>
+    <div class="sq-t">Before entering office, what was your primary source of income?</div>
+    <ul class="sq-opts">
+      <li>Full-time employment</li>
+      <li>Part-time employment</li>
+      <li>Self-employment/business</li>
+      <li>Family support</li>
+      <li>Student support/scholarship</li>
+      <li>Campaign or party stipend</li>
+      <li>No stable income</li>
+      <li>Other</li>
+    </ul>
+  </div>
+</div>
+<div class="sq">
+  <div class="sq-n">Q32</div>
+  <div>
+    <div class="sq-t">During your time in office, was your compensation sufficient to support your basic living expenses?</div>
+    <ul class="sq-opts">
+      <li>Yes, fully</li>
+      <li>Mostly</li>
+      <li>Somewhat</li>
+      <li>No</li>
+      <li>Not applicable</li>
+    </ul>
+  </div>
+</div>
+<div class="sq">
+  <div class="sq-n">Q33</div>
+  <div>
+    <div class="sq-t">Did serving in office require you to reduce or leave paid employment?</div>
+    <ul class="sq-opts">
+      <li>Yes, I left paid employment</li>
+      <li>Yes, I reduced paid employment</li>
+      <li>No</li>
+      <li>Not applicable</li>
+    </ul>
+  </div>
+</div>
+<div class="sq">
+  <div class="sq-n">Q34</div>
+  <div>
+    <div class="sq-t">Did financial pressure affect your ability to serve effectively?</div>
+    <ul class="sq-opts">
+      <li>A great deal</li>
+      <li>Somewhat</li>
+      <li>A little</li>
+      <li>Not at all</li>
+    </ul>
+  </div>
+</div>
+<div class="sq">
+  <div class="sq-n">Q35</div>
+  <div>
+    <div class="sq-t">Did financial pressure affect your decision about whether to seek another term?</div>
+    <ul class="sq-opts">
+      <li>Yes, significantly</li>
+      <li>Yes, somewhat</li>
+      <li>No</li>
+      <li>Not applicable</li>
+      <li>Unsure</li>
+    </ul>
+  </div>
+</div>
+<div class="sq">
+  <div class="sq-n">Q36</div>
+  <div>
+    <div class="sq-t">Which financial challenges have you faced as a young political actor? Select all that apply.</div>
+    <ul class="sq-opts">
+      <li>Campaign expenses</li>
+      <li>Travel costs</li>
+      <li>Housing or relocation costs</li>
+      <li>Loss of income</li>
+      <li>Lack of health insurance or benefits</li>
+      <li>Supporting family while serving</li>
+      <li>Fundraising expectations</li>
+      <li>Debt or personal loans</li>
+      <li>Pressure to self-fund campaigns</li>
+      <li>Lack of paid staff</li>
+      <li>Other</li>
+    </ul>
+  </div>
+</div>
+<div class="sq">
+  <div class="sq-n">Q37</div>
+  <div>
+    <div class="sq-t">Did you have access to financial support from any of the following? Select all that apply.</div>
+    <ul class="sq-opts">
+      <li>Political party</li>
+      <li>Family</li>
+      <li>Personal savings</li>
+      <li>Donors</li>
+      <li>Civil society organization</li>
+      <li>Youth leadership program</li>
+      <li>Government salary or stipend</li>
+      <li>Employer flexibility</li>
+      <li>None</li>
+      <li>Other</li>
+    </ul>
+  </div>
+</div>
+<div class="sq">
+  <div class="sq-n">Q38</div>
+  <div>
+    <div class="sq-t">To what extent do you agree: “Only young people with family wealth, patronage networks, or outside income can afford to remain in politics.”</div>
+    <ul class="sq-opts">
+      <li>Strongly agree</li>
+      <li>Agree</li>
+      <li>Neither agree nor disagree</li>
+      <li>Disagree</li>
+      <li>Strongly disagree</li>
+    </ul>
+  </div>
+</div>
+<div class="sq">
+  <div class="sq-n">Q39</div>
+  <div>
+    <div class="sq-t">Did you ever consider leaving politics for a more financially stable career?</div>
+    <ul class="sq-opts">
+      <li>Yes, seriously</li>
+      <li>Yes, occasionally</li>
+      <li>No</li>
+      <li>I have already left for this reason</li>
+    </ul>
+  </div>
+</div>
+<div class="sq">
+  <div class="sq-n">Q40</div>
+  <div>
+    <div class="sq-t">What kind of financial support would most improve retention of young elected officials? Select up to three.</div>
+    <ul class="sq-opts">
+      <li>Public campaign financing</li>
+      <li>Better salaries or stipends</li>
+      <li>Housing or travel allowances</li>
+      <li>Health insurance/benefits</li>
+      <li>Paid staff budgets</li>
+      <li>Fellowship programs for young officials</li>
+      <li>Party support for re-election campaigns</li>
+      <li>Donor networks for young candidates</li>
+      <li>Career transition support after office</li>
+      <li>Other</li>
+    </ul>
+  </div>
+</div>
+<div class="sq">
+  <div class="sq-n">Q41</div>
+  <div>
+    <div class="sq-t">Please describe how financial instability has affected your ability or willingness to continue in politics.</div>
+    <ul class="sq-opts">
+      <li>Open response</li>
+    </ul>
+  </div>
+</div>
+<h3 class="survey-h">Section 6 · Barrier 3 — Institutional Under-Support and the Staffing Gap</h3>
+<div class="sq">
+  <div class="sq-n">Q42</div>
+  <div>
+    <div class="sq-t">During your time in office, did you have access to paid professional staff?</div>
+    <ul class="sq-opts">
+      <li>Yes, full-time staff</li>
+      <li>Yes, part-time staff</li>
+      <li>Yes, shared staff</li>
+      <li>No paid staff</li>
+      <li>Only volunteers</li>
+      <li>Not applicable</li>
+    </ul>
+  </div>
+</div>
+<div class="sq">
+  <div class="sq-n">Q43</div>
+  <div>
+    <div class="sq-t">If you had staff, who provided them?</div>
+    <ul class="sq-opts">
+      <li>Government/institutional office</li>
+      <li>Political party</li>
+      <li>Personal funds</li>
+      <li>Donor-funded support</li>
+      <li>Civil society or fellowship program</li>
+      <li>Volunteers</li>
+      <li>Other</li>
+    </ul>
+  </div>
+</div>
+<div class="sq">
+  <div class="sq-n">Q44</div>
+  <div>
+    <div class="sq-t">Which types of support did you have access to? Select all that apply.</div>
+    <ul class="sq-opts">
+      <li>Legislative/research support</li>
+      <li>Communications/social media support</li>
+      <li>Constituent services support</li>
+      <li>Policy analysis</li>
+      <li>Legal or procedural guidance</li>
+      <li>Fundraising support</li>
+      <li>Scheduling/logistics</li>
+      <li>Speechwriting</li>
+      <li>Mentorship</li>
+      <li>None of the above</li>
+    </ul>
+  </div>
+</div>
+<div class="sq">
+  <div class="sq-n">Q45</div>
+  <div>
+    <div class="sq-t">Which types of support did you need but did not have? Select all that apply.</div>
+    <ul class="sq-opts">
+      <li>Legislative/research support</li>
+      <li>Communications/social media support</li>
+      <li>Constituent services support</li>
+      <li>Policy analysis</li>
+      <li>Legal or procedural guidance</li>
+      <li>Fundraising support</li>
+      <li>Scheduling/logistics</li>
+      <li>Speechwriting</li>
+      <li>Mentorship</li>
+      <li>Security or harassment response</li>
+      <li>Mental health support</li>
+      <li>Other</li>
+    </ul>
+  </div>
+</div>
+<div class="sq">
+  <div class="sq-n">Q46</div>
+  <div>
+    <div class="sq-t">How much did lack of staff or professional support limit your effectiveness in office?</div>
+    <ul class="sq-opts">
+      <li>A great deal</li>
+      <li>Somewhat</li>
+      <li>A little</li>
+      <li>Not at all</li>
+    </ul>
+  </div>
+</div>
+<div class="sq">
+  <div class="sq-n">Q47</div>
+  <div>
+    <div class="sq-t">To what extent do you agree: “Young elected officials are expected to perform like senior politicians but without the staff, networks, or institutional infrastructure they need.”</div>
+    <ul class="sq-opts">
+      <li>Strongly agree</li>
+      <li>Agree</li>
+      <li>Neither agree nor disagree</li>
+      <li>Disagree</li>
+      <li>Strongly disagree</li>
+    </ul>
+  </div>
+</div>
+<div class="sq">
+  <div class="sq-n">Q48</div>
+  <div>
+    <div class="sq-t">Did you rely on unpaid volunteers, friends, or personal networks to perform official duties?</div>
+    <ul class="sq-opts">
+      <li>Yes, frequently</li>
+      <li>Yes, sometimes</li>
+      <li>Rarely</li>
+      <li>Never</li>
+    </ul>
+  </div>
+</div>
+<div class="sq">
+  <div class="sq-n">Q49</div>
+  <div>
+    <div class="sq-t">Did the absence of staff or institutional support affect your decision about whether to continue in politics?</div>
+    <ul class="sq-opts">
+      <li>Yes, significantly</li>
+      <li>Yes, somewhat</li>
+      <li>No</li>
+      <li>Not applicable</li>
+    </ul>
+  </div>
+</div>
+<div class="sq">
+  <div class="sq-n">Q50</div>
+  <div>
+    <div class="sq-t">Would access to a professional staffing ecosystem make you more likely to seek another term or higher office?</div>
+    <ul class="sq-opts">
+      <li>Yes, definitely</li>
+      <li>Yes, probably</li>
+      <li>Unsure</li>
+      <li>Probably not</li>
+      <li>Definitely not</li>
+    </ul>
+  </div>
+</div>
+<div class="sq">
+  <div class="sq-n">Q51</div>
+  <div>
+    <div class="sq-t">What would a useful staffing ecosystem for young elected officials include? Select up to five.</div>
+    <ul class="sq-opts">
+      <li>Policy researchers</li>
+      <li>Legislative assistants</li>
+      <li>Communications staff</li>
+      <li>Digital/social media staff</li>
+      <li>Constituent service coordinators</li>
+      <li>Legal/procedural advisers</li>
+      <li>Fundraising advisers</li>
+      <li>Campaign managers</li>
+      <li>Mentors/former elected officials</li>
+      <li>Mental health or burnout support</li>
+      <li>Security/risk management support</li>
+      <li>International peer network</li>
+      <li>Other</li>
+    </ul>
+  </div>
+</div>
+<div class="sq">
+  <div class="sq-n">Q52</div>
+  <div>
+    <div class="sq-t">Please describe a moment when lack of staff, training, or institutional support made your work harder.</div>
+    <ul class="sq-opts">
+      <li>Open response</li>
+    </ul>
+  </div>
+</div>
+<h3 class="survey-h">Section 7 · Barrier 4 — Institutional Marginalization and Limited Power</h3>
+<div class="sq">
+  <div class="sq-n">Q53</div>
+  <div>
+    <div class="sq-t">After entering office, how much real influence did you feel you had over decisions?</div>
+    <ul class="sq-opts">
+      <li>A great deal</li>
+      <li>Some influence</li>
+      <li>Limited influence</li>
+      <li>Very little influence</li>
+      <li>No influence</li>
+    </ul>
+  </div>
+</div>
+<div class="sq">
+  <div class="sq-n">Q54</div>
+  <div>
+    <div class="sq-t">Were you given meaningful committee assignments, portfolios, or leadership responsibilities?</div>
+    <ul class="sq-opts">
+      <li>Yes, significant responsibilities</li>
+      <li>Yes, but limited responsibilities</li>
+      <li>No, mostly symbolic responsibilities</li>
+      <li>No formal responsibilities</li>
+      <li>Not applicable</li>
+    </ul>
+  </div>
+</div>
+<div class="sq">
+  <div class="sq-n">Q55</div>
+  <div>
+    <div class="sq-t">To what extent do you agree: “Young elected officials are often celebrated publicly but excluded from real decision-making.”</div>
+    <ul class="sq-opts">
+      <li>Strongly agree</li>
+      <li>Agree</li>
+      <li>Neither agree nor disagree</li>
+      <li>Disagree</li>
+      <li>Strongly disagree</li>
+    </ul>
+  </div>
+</div>
+<div class="sq">
+  <div class="sq-n">Q56</div>
+  <div>
+    <div class="sq-t">Have you ever felt tokenized because of your age?</div>
+    <ul class="sq-opts">
+      <li>Frequently</li>
+      <li>Sometimes</li>
+      <li>Rarely</li>
+      <li>Never</li>
+    </ul>
+  </div>
+</div>
+<div class="sq">
+  <div class="sq-n">Q57</div>
+  <div>
+    <div class="sq-t">In your experience, which groups had the most influence over decision-making? Select all that apply.</div>
+    <ul class="sq-opts">
+      <li>Senior party leaders</li>
+      <li>Wealthy donors</li>
+      <li>Older elected officials</li>
+      <li>Bureaucrats/civil servants</li>
+      <li>Business elites</li>
+      <li>Family dynasties</li>
+      <li>Religious/community leaders</li>
+      <li>Military/security actors</li>
+      <li>International actors</li>
+      <li>Other</li>
+    </ul>
+  </div>
+</div>
+<div class="sq">
+  <div class="sq-n">Q58</div>
+  <div>
+    <div class="sq-t">Did senior leaders mentor you or actively block your advancement?</div>
+    <ul class="sq-opts">
+      <li>Mostly mentored me</li>
+      <li>Some mentored me, some blocked me</li>
+      <li>Mostly blocked or ignored me</li>
+      <li>Neither</li>
+      <li>Not applicable</li>
+    </ul>
+  </div>
+</div>
+<div class="sq">
+  <div class="sq-n">Q59</div>
+  <div>
+    <div class="sq-t">How often were your ideas dismissed because of your age or perceived lack of experience?</div>
+    <ul class="sq-opts">
+      <li>Very often</li>
+      <li>Sometimes</li>
+      <li>Rarely</li>
+      <li>Never</li>
+    </ul>
+  </div>
+</div>
+<div class="sq">
+  <div class="sq-n">Q60</div>
+  <div>
+    <div class="sq-t">Did institutional marginalization affect your motivation to continue in politics?</div>
+    <ul class="sq-opts">
+      <li>Yes, significantly</li>
+      <li>Yes, somewhat</li>
+      <li>No</li>
+      <li>Not applicable</li>
+    </ul>
+  </div>
+</div>
+<div class="sq">
+  <div class="sq-n">Q61</div>
+  <div>
+    <div class="sq-t">Please describe one example where your age affected how seriously you were treated in office.</div>
+    <ul class="sq-opts">
+      <li>Open response</li>
+    </ul>
+  </div>
+</div>
+<h3 class="survey-h">Section 8 · Barrier 5 — System Exit, Burnout, Risk, and Disillusionment</h3>
+<div class="sq">
+  <div class="sq-n">Q62</div>
+  <div>
+    <div class="sq-t">Have you experienced burnout as a result of political work or public office?</div>
+    <ul class="sq-opts">
+      <li>Yes, severe burnout</li>
+      <li>Yes, moderate burnout</li>
+      <li>Mild burnout</li>
+      <li>No</li>
+      <li>Prefer not to say</li>
+    </ul>
+  </div>
+</div>
+<div class="sq">
+  <div class="sq-n">Q63</div>
+  <div>
+    <div class="sq-t">Which factors contributed most to burnout or disillusionment? Select all that apply.</div>
+    <ul class="sq-opts">
+      <li>Overwork</li>
+      <li>Lack of staff</li>
+      <li>Financial stress</li>
+      <li>Party conflict</li>
+      <li>Public criticism</li>
+      <li>Online harassment</li>
+      <li>Physical safety concerns</li>
+      <li>Family pressure</li>
+      <li>Slow pace of change</li>
+      <li>Corruption or unethical practices</li>
+      <li>Lack of real power</li>
+      <li>Electoral pressure</li>
+      <li>Media scrutiny</li>
+      <li>Other</li>
+    </ul>
+  </div>
+</div>
+<div class="sq">
+  <div class="sq-n">Q64</div>
+  <div>
+    <div class="sq-t">Have you experienced harassment, intimidation, or threats because of your political role?</div>
+    <ul class="sq-opts">
+      <li>Yes, online</li>
+      <li>Yes, offline/in person</li>
+      <li>Yes, both online and offline</li>
+      <li>No</li>
+      <li>Prefer not to say</li>
+    </ul>
+  </div>
+</div>
+<div class="sq">
+  <div class="sq-n">Q65</div>
+  <div>
+    <div class="sq-t">Did safety concerns affect your willingness to continue in politics?</div>
+    <ul class="sq-opts">
+      <li>Yes, significantly</li>
+      <li>Yes, somewhat</li>
+      <li>No</li>
+      <li>Not applicable</li>
+    </ul>
+  </div>
+</div>
+<div class="sq">
+  <div class="sq-n">Q66</div>
+  <div>
+    <div class="sq-t">Did your political work negatively affect your personal life, family life, health, or career?</div>
+    <ul class="sq-opts">
+      <li>Yes, significantly</li>
+      <li>Yes, somewhat</li>
+      <li>No</li>
+      <li>Prefer not to say</li>
+    </ul>
+  </div>
+</div>
+<div class="sq">
+  <div class="sq-n">Q67</div>
+  <div>
+    <div class="sq-t">Have you ever seriously considered leaving politics altogether?</div>
+    <ul class="sq-opts">
+      <li>Yes, and I have left</li>
+      <li>Yes, seriously considered it</li>
+      <li>Yes, occasionally considered it</li>
+      <li>No</li>
+    </ul>
+  </div>
+</div>
+<div class="sq">
+  <div class="sq-n">Q68</div>
+  <div>
+    <div class="sq-t">If you have considered leaving politics, what was the main reason?</div>
+    <ul class="sq-opts">
+      <li>Financial instability</li>
+      <li>Party gatekeeping</li>
+      <li>Lack of staff/support</li>
+      <li>Burnout</li>
+      <li>Safety concerns</li>
+      <li>Lack of influence</li>
+      <li>Family or personal reasons</li>
+      <li>Better career opportunities</li>
+      <li>Disillusionment with political institutions</li>
+      <li>Other</li>
+    </ul>
+  </div>
+</div>
+<div class="sq">
+  <div class="sq-n">Q69</div>
+  <div>
+    <div class="sq-t">To what extent do you agree: “The political system is better at recruiting young candidates than sustaining young leaders.”</div>
+    <ul class="sq-opts">
+      <li>Strongly agree</li>
+      <li>Agree</li>
+      <li>Neither agree nor disagree</li>
+      <li>Disagree</li>
+      <li>Strongly disagree</li>
+    </ul>
+  </div>
+</div>
+<div class="sq">
+  <div class="sq-n">Q70</div>
+  <div>
+    <div class="sq-t">What would have made you more likely to stay in politics long-term?</div>
+    <ul class="sq-opts">
+      <li>Open response</li>
+    </ul>
+  </div>
+</div>
+<h3 class="survey-h">Section 9 · Comparative Political System Questions</h3>
+<div class="sq">
+  <div class="sq-n">Q71</div>
+  <div>
+    <div class="sq-t">In your country or political system, are young people encouraged to run for office?</div>
+    <ul class="sq-opts">
+      <li>Yes, strongly</li>
+      <li>Yes, somewhat</li>
+      <li>Not really</li>
+      <li>No</li>
+      <li>Unsure</li>
+    </ul>
+  </div>
+</div>
+<div class="sq">
+  <div class="sq-n">Q72</div>
+  <div>
+    <div class="sq-t">In your country or political system, are young elected officials supported after winning?</div>
+    <ul class="sq-opts">
+      <li>Yes, strongly</li>
+      <li>Yes, somewhat</li>
+      <li>Not really</li>
+      <li>No</li>
+      <li>Unsure</li>
+    </ul>
+  </div>
+</div>
+<div class="sq">
+  <div class="sq-n">Q73</div>
+  <div>
+    <div class="sq-t">Which of the following best describes your political system’s approach to young leaders?</div>
+    <ul class="sq-opts">
+      <li>Encourages young people to run and supports them after they win</li>
+      <li>Encourages young people to run but does not support them after they win</li>
+      <li>Does not seriously encourage young people to run</li>
+      <li>Uses young candidates mostly symbolically</li>
+      <li>Other</li>
+    </ul>
+  </div>
+</div>
+<div class="sq">
+  <div class="sq-n">Q74</div>
+  <div>
+    <div class="sq-t">Are there formal mechanisms to support young elected officials in your country? Select all that apply.</div>
+    <ul class="sq-opts">
+      <li>Youth quotas</li>
+      <li>Reserved seats</li>
+      <li>Public campaign finance</li>
+      <li>Training programs</li>
+      <li>Mentorship programs</li>
+      <li>Staff budgets</li>
+      <li>Young legislators’ caucus/network</li>
+      <li>Party youth wings</li>
+      <li>International fellowships</li>
+      <li>None</li>
+      <li>Other</li>
+    </ul>
+  </div>
+</div>
+<div class="sq">
+  <div class="sq-n">Q75</div>
+  <div>
+    <div class="sq-t">Which mechanism has been most useful in helping young people enter politics?</div>
+    <ul class="sq-opts">
+      <li>Open response</li>
+    </ul>
+  </div>
+</div>
+<div class="sq">
+  <div class="sq-n">Q76</div>
+  <div>
+    <div class="sq-t">Which mechanism has been most useful in helping young people remain in politics?</div>
+    <ul class="sq-opts">
+      <li>Open response</li>
+    </ul>
+  </div>
+</div>
+<div class="sq">
+  <div class="sq-n">Q77</div>
+  <div>
+    <div class="sq-t">What is the biggest gap between youth political entry and youth political retention in your country?</div>
+    <ul class="sq-opts">
+      <li>Open response</li>
+    </ul>
+  </div>
+</div>
+<h3 class="survey-h">Section 10 · Ranking the Barriers</h3>
+<div class="sq">
+  <div class="sq-n">Q78</div>
+  <div>
+    <div class="sq-t">Please rank the following barriers from most important to least important in explaining why young elected officials leave politics after one term.</div>
+    <ul class="sq-opts">
+      <li>Party displacement or renomination failure</li>
+      <li>Financial and career instability</li>
+      <li>Lack of staff or institutional support</li>
+      <li>Limited power or marginalization in office</li>
+      <li>Burnout, harassment, risk, or disillusionment</li>
+    </ul>
+  </div>
+</div>
+<div class="sq">
+  <div class="sq-n">Q79</div>
+  <div>
+    <div class="sq-t">Which one barrier most affected your own political career?</div>
+    <ul class="sq-opts">
+      <li>Party displacement or renomination failure</li>
+      <li>Financial and career instability</li>
+      <li>Lack of staff or institutional support</li>
+      <li>Limited power or marginalization in office</li>
+      <li>Burnout, harassment, risk, or disillusionment</li>
+      <li>None of these</li>
+      <li>Other</li>
+    </ul>
+  </div>
+</div>
+<div class="sq">
+  <div class="sq-n">Q80</div>
+  <div>
+    <div class="sq-t">Which one reform would most improve retention of young elected officials?</div>
+    <ul class="sq-opts">
+      <li>Stronger party commitments to renomination</li>
+      <li>Public campaign finance</li>
+      <li>Better salaries or benefits</li>
+      <li>Guaranteed staffing support</li>
+      <li>Mentorship and training</li>
+      <li>Protection against harassment and violence</li>
+      <li>Leadership roles for young officials</li>
+      <li>Career transition support</li>
+      <li>Other</li>
+    </ul>
+  </div>
+</div>
+<h3 class="survey-h">Section 11 · Final Open-Ended Questions</h3>
+<div class="sq">
+  <div class="sq-n">Q81</div>
+  <div>
+    <div class="sq-t">What is one thing outsiders misunderstand about young elected officials after they win?</div>
+    <ul class="sq-opts">
+      <li>Open response</li>
+    </ul>
+  </div>
+</div>
+<div class="sq">
+  <div class="sq-n">Q82</div>
+  <div>
+    <div class="sq-t">What was the hardest part of serving in office that you did not expect before winning?</div>
+    <ul class="sq-opts">
+      <li>Open response</li>
+    </ul>
+  </div>
+</div>
+<div class="sq">
+  <div class="sq-n">Q83</div>
+  <div>
+    <div class="sq-t">What support did you receive that helped you stay in politics?</div>
+    <ul class="sq-opts">
+      <li>Open response</li>
+    </ul>
+  </div>
+</div>
+<div class="sq">
+  <div class="sq-n">Q84</div>
+  <div>
+    <div class="sq-t">What support did you need but never received?</div>
+    <ul class="sq-opts">
+      <li>Open response</li>
+    </ul>
+  </div>
+</div>
+<div class="sq">
+  <div class="sq-n">Q85</div>
+  <div>
+    <div class="sq-t">If you could redesign the political system to better retain young elected officials, what would you change first?</div>
+    <ul class="sq-opts">
+      <li>Open response</li>
+    </ul>
+  </div>
+</div>
+<div class="sq">
+  <div class="sq-n">Q86</div>
+  <div>
+    <div class="sq-t">Is there anything else you would like to share about your experience as a young elected or appointed official?</div>
+    <ul class="sq-opts">
+      <li>Open response</li>
+    </ul>
+  </div>
+</div>
+</section>
+
+<footer class="site-footer">
+  <p>Return to <a href="/">the main report</a>.</p>
+  <p>For correspondence, write to <a href="mailto:Sudhanshu@centreforyouthpolicy.org">Sudhanshu@centreforyouthpolicy.org</a>.</p>
+  <div class="fine">© 2026 Centre for Youth Policy · n = 100</div>
+</footer>
+
+</body>
+</html>
