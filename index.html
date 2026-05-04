@@ -967,6 +967,83 @@
     .toc-row { grid-template-columns: 36px 1fr; gap: 12px; }
     .toc-label { font-size: 18px; }
   }
+
+  /* ============ PRINT (PDF) ============ */
+  @media print {
+    @page { size: A4; margin: 14mm 14mm 16mm; }
+    html { scroll-behavior: auto; }
+    body {
+      font-size: 10.5pt;
+      line-height: 1.5;
+      background: var(--paper) !important;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+    /* Hide screen-only chrome */
+    .topnav, .hero-scroll-cue { display: none !important; }
+    /* Force any reveal-controlled content to be visible (animations are off in print) */
+    .reveal, .anim-on .reveal, .chart, .anim-on .chart .anim-bar, .anim-on .chart .anim-dot, .anim-on .chart .anim-line, .anim-on .chart .anim-fade {
+      opacity: 1 !important;
+      transform: none !important;
+      stroke-dashoffset: 0 !important;
+      transition: none !important;
+    }
+    /* Hero on its own first page */
+    .hero { min-height: auto; padding: 24mm 14mm 18mm; page-break-after: always; break-after: page; border-bottom: 0; }
+    .hero-title { font-size: 64pt; }
+    .hero-deck  { font-size: 14pt; }
+    .hero-pull-num { font-size: 36pt; }
+    .hero-pull-label { font-size: 10pt; }
+    .hero-meta { font-size: 7.5pt; }
+    /* Each section starts on a new page */
+    .toc-section, .chapter { page-break-before: always; break-before: page; }
+    .toc-section { padding: 12mm 0; }
+    .toc-h { font-size: 36pt; margin-bottom: 24pt; padding-bottom: 12pt; }
+    .toc-label { font-size: 14pt; }
+    .toc-label em { font-size: 10pt; }
+    .chapter { padding: 14mm 0 8mm; border-bottom: 0; }
+    .chapter-head { margin-bottom: 24pt; }
+    .chapter-num { font-size: 36pt; }
+    .chapter-title { font-size: 30pt; line-height: 1.05; margin-bottom: 12pt; }
+    .chapter-deck { font-size: 13pt; }
+    /* Body prose */
+    .prose .lede { font-size: 13pt; margin-bottom: 16pt; }
+    .prose p { margin-bottom: 11pt; orphans: 3; widows: 3; }
+    .prose h3 { font-size: 16pt; margin: 20pt 0 10pt; page-break-after: avoid; break-after: avoid; }
+    /* Quotes / figures stay together */
+    .pq, .iq, .kf, .stat-strip, .fig, .rec, .rank-table, tr, .country-row {
+      page-break-inside: avoid;
+      break-inside: avoid;
+    }
+    .pq { margin: 24pt 0; padding: 24pt 16pt; }
+    .pq-text { font-size: 16pt; }
+    .iq { margin: 16pt 0; padding: 12pt 0 12pt 16pt; }
+    .iq-text { font-size: 12pt; }
+    .stat-cell-num { font-size: 28pt; }
+    .stat-cell-label, .iq-attr, .pq-attr { font-size: 9pt; }
+    .fig { margin: 22pt 0; }
+    .fig-title { font-size: 14pt; }
+    .country-row .count { font-size: 14pt; }
+    /* Dark section: keep the dark background printed */
+    .chapter.dark {
+      background: var(--paper-dark) !important;
+      color: #d8d2c0 !important;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+    /* Footer trimmed for print */
+    .site-footer { padding: 16mm 0 10mm; page-break-before: always; break-before: page; }
+    .site-footer a { color: #d8d2c0 !important; }
+    /* Make all backgrounds print exactly */
+    .kf, .toc-section, .stat-cell, .stat-strip, .pq, .country-row {
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+    /* Avoid ugly blank space */
+    section, .chapter-inner, .footer-inner { max-width: 100%; }
+    a { color: var(--ink) !important; text-decoration: none; }
+    .chapter.dark a, .site-footer a { color: #d8d2c0 !important; }
+  }
 </style>
 </head>
 <body>
@@ -2281,8 +2358,8 @@
       <div class="footer-col">
         <h4>Correspondence</h4>
         <a href="mailto:Sudhanshu@centreforyouthpolicy.org">Sudhanshu@centreforyouthpolicy.org</a>
-        <a href="#">Press inquiries</a>
-        <a href="#">Download PDF</a>
+        <a href="After-They-Win.pdf" download>Download report (PDF)</a>
+        <a href="Survey-Instrument.pdf" download>Survey instrument (PDF)</a>
       </div>
     </div>
 
